@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--First View Controller - Notes-->
+        <!--Notes View Controller - Notes-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="AMSFirstViewController" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" userLabel="Notes View Controller - Notes" customClass="AMSFirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -53,12 +53,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3013" y="-456"/>
+            <point key="canvasLocation" x="2993" y="-1676"/>
         </scene>
-        <!--Second View Controller - Echo-->
+        <!--Echo View Controller - Echo-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="AMSSecondViewController" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="Echo View Controller - Echo" customClass="AMSSecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -107,12 +107,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3013" y="718"/>
+            <point key="canvasLocation" x="2993" y="-502"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="AMSTabBarController" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -122,16 +122,58 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="y5A-lJ-NU6" kind="relationship" relationship="viewControllers" id="HhY-6w-Cke"/>
+                        <segue destination="ojQ-nS-XwT" kind="relationship" relationship="viewControllers" id="D6G-7O-s8N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2023" y="718"/>
+            <point key="canvasLocation" x="2003" y="154"/>
+        </scene>
+        <!--Calendar View Controller - Calendar-->
+        <scene sceneID="AxU-pE-56q">
+            <objects>
+                <viewController id="y5A-lJ-NU6" userLabel="Calendar View Controller - Calendar" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HnB-TO-rAR"/>
+                        <viewControllerLayoutGuide type="bottom" id="IUa-Dj-3JC"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IBG-hF-iUh">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Calendar" image="CalendarTab" id="se7-Cv-MVX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ik0-nf-exe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2998" y="679"/>
+        </scene>
+        <!--Settings View Controller - Settings-->
+        <scene sceneID="q7Y-cW-J2e">
+            <objects>
+                <viewController id="ojQ-nS-XwT" userLabel="Settings View Controller - Settings" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RCl-iu-5Lw"/>
+                        <viewControllerLayoutGuide type="bottom" id="vPs-Qp-L9h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8aG-cY-E3P">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Settings" image="SettingsTab" id="84y-p5-TDZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mk2-Aj-dzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3006" y="1835"/>
         </scene>
     </scenes>
     <resources>
+        <image name="CalendarTab" width="25" height="25"/>
         <image name="EchoTab" width="25" height="25"/>
         <image name="NotesTab" width="25" height="25"/>
+        <image name="SettingsTab" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

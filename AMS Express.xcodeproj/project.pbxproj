@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */; };
 		3BCAA13519747B49008A74F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13419747B49008A74F6 /* Foundation.framework */; };
 		3BCAA13719747B49008A74F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13619747B49008A74F6 /* CoreGraphics.framework */; };
 		3BCAA13919747B49008A74F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13819747B49008A74F6 /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSTabBarController.h; sourceTree = "<group>"; };
+		3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSTabBarController.m; sourceTree = "<group>"; };
 		3BCAA13119747B49008A74F6 /* AMS Express.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AMS Express.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCAA13419747B49008A74F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3BCAA13619747B49008A74F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -118,6 +121,8 @@
 				3BCAA14319747B49008A74F6 /* AMSAppDelegate.h */,
 				3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */,
 				3BCAA14619747B49008A74F6 /* Main.storyboard */,
+				3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */,
+				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
 				3BCAA14919747B49008A74F6 /* AMSFirstViewController.h */,
 				3BCAA14A19747B49008A74F6 /* AMSFirstViewController.m */,
 				3BCAA14C19747B49008A74F6 /* AMSSecondViewController.h */,
@@ -256,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BCAA14E19747B49008A74F6 /* AMSSecondViewController.m in Sources */,
+				3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */,
 				3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */,
 				3BCAA14B19747B49008A74F6 /* AMSFirstViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
@@ -465,6 +471,7 @@
 				3BCAA16819747B49008A74F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3BCAA16919747B49008A74F6 /* Build configuration list for PBXNativeTarget "AMS ExpressTests" */ = {
 			isa = XCConfigurationList;
@@ -473,6 +480,7 @@
 				3BCAA16B19747B49008A74F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
