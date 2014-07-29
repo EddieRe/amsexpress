@@ -15,8 +15,6 @@
 		3BCAA14119747B49008A74F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA14019747B49008A74F6 /* main.m */; };
 		3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */; };
 		3BCAA14819747B49008A74F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAA14619747B49008A74F6 /* Main.storyboard */; };
-		3BCAA14B19747B49008A74F6 /* AMSFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA14A19747B49008A74F6 /* AMSFirstViewController.m */; };
-		3BCAA14E19747B49008A74F6 /* AMSSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA14D19747B49008A74F6 /* AMSSecondViewController.m */; };
 		3BCAA15019747B49008A74F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAA14F19747B49008A74F6 /* Images.xcassets */; };
 		3BCAA15719747B49008A74F6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA15619747B49008A74F6 /* XCTest.framework */; };
 		3BCAA15819747B49008A74F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13419747B49008A74F6 /* Foundation.framework */; };
@@ -49,10 +47,6 @@
 		3BCAA14319747B49008A74F6 /* AMSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMSAppDelegate.h; sourceTree = "<group>"; };
 		3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMSAppDelegate.m; sourceTree = "<group>"; };
 		3BCAA14719747B49008A74F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3BCAA14919747B49008A74F6 /* AMSFirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMSFirstViewController.h; sourceTree = "<group>"; };
-		3BCAA14A19747B49008A74F6 /* AMSFirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMSFirstViewController.m; sourceTree = "<group>"; };
-		3BCAA14C19747B49008A74F6 /* AMSSecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMSSecondViewController.h; sourceTree = "<group>"; };
-		3BCAA14D19747B49008A74F6 /* AMSSecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMSSecondViewController.m; sourceTree = "<group>"; };
 		3BCAA14F19747B49008A74F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3BCAA15519747B49008A74F6 /* AMS ExpressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AMS ExpressTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCAA15619747B49008A74F6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -123,10 +117,6 @@
 				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */,
 				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
-				3BCAA14919747B49008A74F6 /* AMSFirstViewController.h */,
-				3BCAA14A19747B49008A74F6 /* AMSFirstViewController.m */,
-				3BCAA14C19747B49008A74F6 /* AMSSecondViewController.h */,
-				3BCAA14D19747B49008A74F6 /* AMSSecondViewController.m */,
 				3BCAA14F19747B49008A74F6 /* Images.xcassets */,
 				3BCAA13B19747B49008A74F6 /* Supporting Files */,
 			);
@@ -260,10 +250,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3BCAA14E19747B49008A74F6 /* AMSSecondViewController.m in Sources */,
 				3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */,
 				3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */,
-				3BCAA14B19747B49008A74F6 /* AMSFirstViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
