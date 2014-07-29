@@ -8,11 +8,17 @@
 
 #import "AMSAppDelegate.h"
 
+#import "AMSNotesDetailViewController.h"
+
 @implementation AMSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    UISplitViewController *splitViewController = [tabBarController.viewControllers firstObject];
+    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+    splitViewController.delegate = (id)navigationController.topViewController;
+    
     return YES;
 }
 							

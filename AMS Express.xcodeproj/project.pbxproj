@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */; };
+		3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */; };
+		3B71903D198829CF005CDA0D /* AMSNotesDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B71903C198829CF005CDA0D /* AMSNotesDetailViewController.m */; };
 		3BCAA13519747B49008A74F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13419747B49008A74F6 /* Foundation.framework */; };
 		3BCAA13719747B49008A74F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13619747B49008A74F6 /* CoreGraphics.framework */; };
 		3BCAA13919747B49008A74F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13819747B49008A74F6 /* UIKit.framework */; };
@@ -36,6 +38,10 @@
 /* Begin PBXFileReference section */
 		3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSTabBarController.h; sourceTree = "<group>"; };
 		3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSTabBarController.m; sourceTree = "<group>"; };
+		3B71903719881E2D005CDA0D /* AMSNotesMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesMasterViewController.h; sourceTree = "<group>"; };
+		3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesMasterViewController.m; sourceTree = "<group>"; };
+		3B71903B198829CF005CDA0D /* AMSNotesDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesDetailViewController.h; sourceTree = "<group>"; };
+		3B71903C198829CF005CDA0D /* AMSNotesDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesDetailViewController.m; sourceTree = "<group>"; };
 		3BCAA13119747B49008A74F6 /* AMS Express.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AMS Express.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCAA13419747B49008A74F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3BCAA13619747B49008A74F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -79,6 +85,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B71903A19881E3A005CDA0D /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				3B71903719881E2D005CDA0D /* AMSNotesMasterViewController.h */,
+				3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */,
+				3B71903B198829CF005CDA0D /* AMSNotesDetailViewController.h */,
+				3B71903C198829CF005CDA0D /* AMSNotesDetailViewController.m */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
 		3BCAA12819747B48008A74F6 = {
 			isa = PBXGroup;
 			children = (
@@ -114,9 +131,10 @@
 			children = (
 				3BCAA14319747B49008A74F6 /* AMSAppDelegate.h */,
 				3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */,
-				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */,
 				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
+				3B71903A19881E3A005CDA0D /* Notes */,
+				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3BCAA14F19747B49008A74F6 /* Images.xcassets */,
 				3BCAA13B19747B49008A74F6 /* Supporting Files */,
 			);
@@ -250,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B71903D198829CF005CDA0D /* AMSNotesDetailViewController.m in Sources */,
 				3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */,
 				3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */,
+				3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
