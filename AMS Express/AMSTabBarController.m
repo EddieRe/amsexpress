@@ -49,7 +49,7 @@
 
 - (void)customizeTabBarItems
 {
-    NSArray *imageNames = @[@"NotesTabSelected", @"EchoTabSelected", @"CalendarTabSelected", @"SettingsTabSelected"];
+    NSArray *imageNames = @[@"NotesTabSelected", @"EchoTabSelected", @"CalendarTabSelected", @"SettingsTabSelected", @"OasisTabSelected"];
     NSMutableArray *images = [[NSMutableArray alloc] init];
     for (NSString *imageName in imageNames) {
         UIImage *image = [UIImage imageNamed:imageName];
@@ -59,7 +59,7 @@
     NSUInteger i = 0;
     for (UIViewController *vc in self.viewControllers) {
         UITabBarItem *tabBarItem = vc.tabBarItem;
-        [tabBarItem setSelectedImage:[images objectAtIndex:i]];
+        [tabBarItem setSelectedImage:images[i]];
         i = i + 1;
     }
 }
