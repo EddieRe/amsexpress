@@ -8,6 +8,7 @@
 
 #import "AMSNotesMasterViewController.h"
 
+#import "AMSNotesSplitVCDelegate.h"
 #import "AMSNotesDataSourceController.h"
 
 @interface AMSNotesMasterViewController ()
@@ -29,10 +30,17 @@
 {
     [super viewDidLoad];
     
+    self.splitVCDelegate = [[AMSNotesSplitVCDelegate alloc] init];
     self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
-    self.dataSourceController.masterVC = self;
-    self.dataSourceController.detailNavigationVC = [self.splitViewController.viewControllers lastObject];
     
+    self.splitVCDelegate.masterVC = self;
+    self.dataSourceController.masterVC = self;
+    
+    UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
+    self.splitVCDelegate.detailNavigationVC = detailNavigationVC;
+    self.dataSourceController.detailNavigationVC = detailNavigationVC;
+    
+    self.splitViewController.delegate = self.splitVCDelegate;
     self.tableView.dataSource = self.dataSourceController;
 }
 

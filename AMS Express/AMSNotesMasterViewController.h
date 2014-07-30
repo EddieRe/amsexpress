@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class AMSNotesDataSourceController;
+@class AMSNotesDataSourceController, AMSNotesSplitVCDelegate;
 
 @interface AMSNotesMasterViewController : UITableViewController
 
+@property (nonatomic, strong) AMSNotesSplitVCDelegate *splitVCDelegate;
 @property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
 
 @end
