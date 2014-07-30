@@ -94,6 +94,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B2196B1198998F700E768A2 /* Oasis */ = {
+			isa = PBXGroup;
+			children = (
+				2CC57474198959F3002F4A3D /* AMSOasisViewController.h */,
+				2CC57475198959F3002F4A3D /* AMSOasisViewController.m */,
+			);
+			name = Oasis;
+			sourceTree = "<group>";
+		};
 		3B71903A19881E3A005CDA0D /* Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,9 +153,11 @@
 			children = (
 				3BCAA14319747B49008A74F6 /* AMSAppDelegate.h */,
 				3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */,
+				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */,
 				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
 				3B71903A19881E3A005CDA0D /* Notes */,
+				3B2196B1198998F700E768A2 /* Oasis */,
 				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3BCAA14F19747B49008A74F6 /* Images.xcassets */,
 				3BCAA13B19747B49008A74F6 /* Supporting Files */,
@@ -287,6 +298,7 @@
 				3B2196AD1989705E00E768A2 /* AMSNotesPDFViewController.m in Sources */,
 				3B2196B01989715D00E768A2 /* AMSNotesSplitVCDelegate.m in Sources */,
 				3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */,
+				2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
