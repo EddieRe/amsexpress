@@ -212,12 +212,12 @@
                                 <rect key="frame" x="0.0" y="26" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem systemItem="rewind" id="WUn-gM-pj0">
+                                    <barButtonItem image="back" id="WUn-gM-pj0">
                                         <connections>
                                             <action selector="goBack" destination="GmM-FO-hyA" id="iuJ-nf-Uak"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="fastForward" id="2H0-Id-z3M">
+                                    <barButtonItem image="forw" id="2H0-Id-z3M">
                                         <connections>
                                             <action selector="goForward" destination="GmM-FO-hyA" id="lFU-1g-Pbj"/>
                                         </connections>
@@ -283,6 +283,8 @@
         <image name="NotesTab" width="25" height="25"/>
         <image name="OasisTab" width="25" height="25"/>
         <image name="SettingsTab" width="25" height="25"/>
+        <image name="back" width="15" height="18"/>
+        <image name="forw" width="15" height="18"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
