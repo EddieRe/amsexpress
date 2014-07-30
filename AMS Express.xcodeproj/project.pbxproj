@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC57475198959F3002F4A3D /* AMSOasisViewController.m */; };
 		3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */; };
+		3B2196AA19896CEA00E768A2 /* AMSNotesDataSourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */; };
+		3B2196AD1989705E00E768A2 /* AMSNotesPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2196AC1989705E00E768A2 /* AMSNotesPDFViewController.m */; };
+		3B2196B01989715D00E768A2 /* AMSNotesSplitVCDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2196AF1989715D00E768A2 /* AMSNotesSplitVCDelegate.m */; };
+		3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */; };
 		3BCAA13519747B49008A74F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13419747B49008A74F6 /* Foundation.framework */; };
 		3BCAA13719747B49008A74F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13619747B49008A74F6 /* CoreGraphics.framework */; };
 		3BCAA13919747B49008A74F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13819747B49008A74F6 /* UIKit.framework */; };
@@ -39,6 +43,14 @@
 		2CC57475198959F3002F4A3D /* AMSOasisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSOasisViewController.m; sourceTree = "<group>"; };
 		3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSTabBarController.h; sourceTree = "<group>"; };
 		3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSTabBarController.m; sourceTree = "<group>"; };
+		3B2196A819896CEA00E768A2 /* AMSNotesDataSourceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesDataSourceController.h; sourceTree = "<group>"; };
+		3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesDataSourceController.m; sourceTree = "<group>"; };
+		3B2196AB1989705E00E768A2 /* AMSNotesPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesPDFViewController.h; sourceTree = "<group>"; };
+		3B2196AC1989705E00E768A2 /* AMSNotesPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesPDFViewController.m; sourceTree = "<group>"; };
+		3B2196AE1989715D00E768A2 /* AMSNotesSplitVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesSplitVCDelegate.h; sourceTree = "<group>"; };
+		3B2196AF1989715D00E768A2 /* AMSNotesSplitVCDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesSplitVCDelegate.m; sourceTree = "<group>"; };
+		3B71903719881E2D005CDA0D /* AMSNotesMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesMasterViewController.h; sourceTree = "<group>"; };
+		3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesMasterViewController.m; sourceTree = "<group>"; };
 		3BCAA13119747B49008A74F6 /* AMS Express.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AMS Express.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCAA13419747B49008A74F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3BCAA13619747B49008A74F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -82,6 +94,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B2196B1198998F700E768A2 /* Oasis */ = {
+			isa = PBXGroup;
+			children = (
+				2CC57474198959F3002F4A3D /* AMSOasisViewController.h */,
+				2CC57475198959F3002F4A3D /* AMSOasisViewController.m */,
+			);
+			name = Oasis;
+			sourceTree = "<group>";
+		};
+		3B71903A19881E3A005CDA0D /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				3B71903719881E2D005CDA0D /* AMSNotesMasterViewController.h */,
+				3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */,
+				3B2196A819896CEA00E768A2 /* AMSNotesDataSourceController.h */,
+				3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */,
+				3B2196AB1989705E00E768A2 /* AMSNotesPDFViewController.h */,
+				3B2196AC1989705E00E768A2 /* AMSNotesPDFViewController.m */,
+				3B2196AE1989715D00E768A2 /* AMSNotesSplitVCDelegate.h */,
+				3B2196AF1989715D00E768A2 /* AMSNotesSplitVCDelegate.m */,
+			);
+			name = Notes;
+			sourceTree = "<group>";
+		};
 		3BCAA12819747B48008A74F6 = {
 			isa = PBXGroup;
 			children = (
@@ -118,10 +154,11 @@
 				3BCAA14319747B49008A74F6 /* AMSAppDelegate.h */,
 				3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */,
 				3BCAA14619747B49008A74F6 /* Main.storyboard */,
-				2CC57474198959F3002F4A3D /* AMSOasisViewController.h */,
-				2CC57475198959F3002F4A3D /* AMSOasisViewController.m */,
 				3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */,
 				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
+				3B71903A19881E3A005CDA0D /* Notes */,
+				3B2196B1198998F700E768A2 /* Oasis */,
+				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3BCAA14F19747B49008A74F6 /* Images.xcassets */,
 				3BCAA13B19747B49008A74F6 /* Supporting Files */,
 			);
@@ -255,8 +292,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B2196AA19896CEA00E768A2 /* AMSNotesDataSourceController.m in Sources */,
 				3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */,
 				3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */,
+				3B2196AD1989705E00E768A2 /* AMSNotesPDFViewController.m in Sources */,
+				3B2196B01989715D00E768A2 /* AMSNotesSplitVCDelegate.m in Sources */,
+				3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */,
 				2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
 			);
