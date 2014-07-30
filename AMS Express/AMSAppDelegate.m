@@ -14,11 +14,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
-    UISplitViewController *splitViewController = [tabBarController.viewControllers firstObject];
-    UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-    splitViewController.delegate = (id)navigationController.topViewController;
-    
     return YES;
 }
 							

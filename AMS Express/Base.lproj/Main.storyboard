@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="3986" y="-1767"/>
         </scene>
-        <!--Notes Detail View Controller-->
+        <!--NotesPDF View Controller-->
         <scene sceneID="HPE-s1-GuE">
             <objects>
-                <viewController id="r80-b3-Dd8" customClass="AMSNotesDetailViewController" sceneMemberID="viewController">
+                <viewController id="r80-b3-Dd8" customClass="AMSNotesPDFViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sjh-at-PLi"/>
                         <viewControllerLayoutGuide type="bottom" id="lyB-y3-maE"/>
@@ -89,7 +89,6 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="o6K-pY-ylx" id="1wb-kG-1wj"/>
                             <outlet property="delegate" destination="o6K-pY-ylx" id="v2o-ik-Yjj"/>
                         </connections>
                     </tableView>
@@ -143,8 +142,8 @@
                         <segue destination="fNb-WX-aMe" kind="relationship" relationship="viewControllers" id="lyq-bF-By4"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="y5A-lJ-NU6" kind="relationship" relationship="viewControllers" id="HhY-6w-Cke"/>
-                        <segue destination="ojQ-nS-XwT" kind="relationship" relationship="viewControllers" id="D6G-7O-s8N"/>
                         <segue destination="OsG-WP-huh" kind="relationship" relationship="viewControllers" id="V3o-5y-Uo1"/>
+                        <segue destination="ojQ-nS-XwT" kind="relationship" relationship="viewControllers" id="D6G-7O-s8N"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>

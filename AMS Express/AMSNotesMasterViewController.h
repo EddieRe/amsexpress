@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@class AMSNotesDetailViewController;
+@class AMSNotesDataSourceController;
 
 @interface AMSNotesMasterViewController : UITableViewController
 
-@property (strong, nonatomic) AMSNotesDetailViewController *detailViewController;
+@property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
 
 @end
