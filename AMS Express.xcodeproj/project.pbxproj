@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC57475198959F3002F4A3D /* AMSOasisViewController.m */; };
 		3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */; };
 		3BCAA13519747B49008A74F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13419747B49008A74F6 /* Foundation.framework */; };
 		3BCAA13719747B49008A74F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13619747B49008A74F6 /* CoreGraphics.framework */; };
@@ -34,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2CC57474198959F3002F4A3D /* AMSOasisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSOasisViewController.h; sourceTree = "<group>"; };
+		2CC57475198959F3002F4A3D /* AMSOasisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSOasisViewController.m; sourceTree = "<group>"; };
 		3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSTabBarController.h; sourceTree = "<group>"; };
 		3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSTabBarController.m; sourceTree = "<group>"; };
 		3BCAA13119747B49008A74F6 /* AMS Express.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AMS Express.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,6 +118,8 @@
 				3BCAA14319747B49008A74F6 /* AMSAppDelegate.h */,
 				3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */,
 				3BCAA14619747B49008A74F6 /* Main.storyboard */,
+				2CC57474198959F3002F4A3D /* AMSOasisViewController.h */,
+				2CC57475198959F3002F4A3D /* AMSOasisViewController.m */,
 				3B1DF0D9197778DD008C87BF /* AMSTabBarController.h */,
 				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
 				3BCAA14F19747B49008A74F6 /* Images.xcassets */,
@@ -252,6 +257,7 @@
 			files = (
 				3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */,
 				3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */,
+				2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
