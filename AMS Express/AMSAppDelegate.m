@@ -8,8 +8,6 @@
 
 #import "AMSAppDelegate.h"
 
-#import "AMSNotesDetailViewController.h"
-
 @implementation AMSAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
