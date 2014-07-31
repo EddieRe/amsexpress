@@ -28,6 +28,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setCalendarURL];
     // Do any additional setup after loading the view.
     [self loadRequestFromString:self.calendarURL];
 }

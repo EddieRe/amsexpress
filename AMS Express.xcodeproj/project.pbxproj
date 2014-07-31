@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC57475198959F3002F4A3D /* AMSOasisViewController.m */; };
-		2CC5747A198A196D002F4A3D /* AMSCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC57479198A196D002F4A3D /* AMSCalendarViewController.m */; };
 		2CC5747E198ABA96002F4A3D /* AMSSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5747D198ABA96002F4A3D /* AMSSettingsViewController.m */; };
 		2CC57480198AD3AF002F4A3D /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2CC5747F198AD3AF002F4A3D /* Settings.plist */; };
 		3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */; };
@@ -23,7 +22,6 @@
 		3BCAA13F19747B49008A74F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAA13D19747B49008A74F6 /* InfoPlist.strings */; };
 		3BCAA14119747B49008A74F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA14019747B49008A74F6 /* main.m */; };
 		3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA14419747B49008A74F6 /* AMSAppDelegate.m */; };
-		3BCAA14819747B49008A74F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAA14619747B49008A74F6 /* Main.storyboard */; };
 		3BCAA15019747B49008A74F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAA14F19747B49008A74F6 /* Images.xcassets */; };
 		3BCAA15719747B49008A74F6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA15619747B49008A74F6 /* XCTest.framework */; };
 		3BCAA15819747B49008A74F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BCAA13419747B49008A74F6 /* Foundation.framework */; };
@@ -32,6 +30,7 @@
 		3BCAA16319747B49008A74F6 /* AMS_ExpressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA16219747B49008A74F6 /* AMS_ExpressTests.m */; };
 		3BEBB817198ACDDE00EBF2EB /* AMSExpress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBB815198ACDDE00EBF2EB /* AMSExpress.xcdatamodeld */; };
 		3BEBB81A198ACE1800EBF2EB /* SavedPDF.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBB819198ACE1800EBF2EB /* SavedPDF.m */; };
+		3BEBB81E198ADF0400EBF2EB /* AMSCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBB81D198ADF0400EBF2EB /* AMSCalendarViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +46,6 @@
 /* Begin PBXFileReference section */
 		2CC57474198959F3002F4A3D /* AMSOasisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSOasisViewController.h; sourceTree = "<group>"; };
 		2CC57475198959F3002F4A3D /* AMSOasisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSOasisViewController.m; sourceTree = "<group>"; };
-		2CC57478198A196D002F4A3D /* AMSCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSCalendarViewController.h; sourceTree = "<group>"; };
-		2CC57479198A196D002F4A3D /* AMSCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSCalendarViewController.m; sourceTree = "<group>"; };
 		2CC5747C198ABA96002F4A3D /* AMSSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSSettingsViewController.h; sourceTree = "<group>"; };
 		2CC5747D198ABA96002F4A3D /* AMSSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSSettingsViewController.m; sourceTree = "<group>"; };
 		2CC5747F198AD3AF002F4A3D /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Settings.plist; sourceTree = "<group>"; };
@@ -83,6 +80,8 @@
 		3BEBB816198ACDDE00EBF2EB /* AMSExpress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AMSExpress.xcdatamodel; sourceTree = "<group>"; };
 		3BEBB818198ACE1800EBF2EB /* SavedPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedPDF.h; sourceTree = "<group>"; };
 		3BEBB819198ACE1800EBF2EB /* SavedPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedPDF.m; sourceTree = "<group>"; };
+		3BEBB81C198ADF0400EBF2EB /* AMSCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSCalendarViewController.h; sourceTree = "<group>"; };
+		3BEBB81D198ADF0400EBF2EB /* AMSCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSCalendarViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,15 +109,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2CC57477198A17DB002F4A3D /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				2CC57478198A196D002F4A3D /* AMSCalendarViewController.h */,
-				2CC57479198A196D002F4A3D /* AMSCalendarViewController.m */,
-			);
-			name = Calendar;
-			sourceTree = "<group>";
-		};
 		2CC5747B198ABA38002F4A3D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -201,8 +191,9 @@
 				3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */,
 				3BCAA14619747B49008A74F6 /* Main.storyboard */,
 				3B71903A19881E3A005CDA0D /* Notes */,
-				2CC5747B198ABA38002F4A3D /* Settings */,
+				3BEBB81F198ADF0800EBF2EB /* Calendar */,
 				3B2196B1198998F700E768A2 /* Oasis */,
+				2CC5747B198ABA38002F4A3D /* Settings */,
 				3BB00EC2198AC68500882656 /* Core Data */,
 				3BCAA14F19747B49008A74F6 /* Images.xcassets */,
 				3BEBB815198ACDDE00EBF2EB /* AMSExpress.xcdatamodeld */,
@@ -239,6 +230,15 @@
 				3BCAA15F19747B49008A74F6 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3BEBB81F198ADF0800EBF2EB /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				3BEBB81C198ADF0400EBF2EB /* AMSCalendarViewController.h */,
+				3BEBB81D198ADF0400EBF2EB /* AMSCalendarViewController.m */,
+			);
+			name = Calendar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,7 +321,6 @@
 				3BCAA15019747B49008A74F6 /* Images.xcassets in Resources */,
 				2CC57480198AD3AF002F4A3D /* Settings.plist in Resources */,
 				3BCAA13F19747B49008A74F6 /* InfoPlist.strings in Resources */,
-				3BCAA14819747B49008A74F6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -344,12 +343,12 @@
 				3B2196AA19896CEA00E768A2 /* AMSNotesDataSourceController.m in Sources */,
 				2CC5747E198ABA96002F4A3D /* AMSSettingsViewController.m in Sources */,
 				3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */,
+				3BEBB81E198ADF0400EBF2EB /* AMSCalendarViewController.m in Sources */,
 				3BCAA14519747B49008A74F6 /* AMSAppDelegate.m in Sources */,
 				3B2196B01989715D00E768A2 /* AMSNotesSplitVCDelegate.m in Sources */,
 				3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */,
 				3BB00EB91989F08800882656 /* AMSNotesWebViewController.m in Sources */,
 				2CC57476198959F3002F4A3D /* AMSOasisViewController.m in Sources */,
-				2CC5747A198A196D002F4A3D /* AMSCalendarViewController.m in Sources */,
 				3BCAA14119747B49008A74F6 /* main.m in Sources */,
 				3BEBB81A198ACE1800EBF2EB /* SavedPDF.m in Sources */,
 			);
