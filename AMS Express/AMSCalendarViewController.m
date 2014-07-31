@@ -10,6 +10,7 @@
 
 @interface AMSCalendarViewController ()
 @property BOOL isLoading;
+@property NSString *calendarURL;
 
 @end
 
@@ -28,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadRequestFromString:@"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York"];
+    [self loadRequestFromString:@"fuckme"]; //fuckme
 }
 
 - (void)loadRequestFromString:(NSString*)urlString
@@ -65,6 +66,31 @@
     self.pageTitle.text = pageTitle;
     self.isLoading = NO;
     
+}
+
+- (void)setCalendarURL
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSLog(@"%@", path);
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSNumber *indexNumber = [settings objectForKey:@"year"];
+    NSUInteger index = [indexNumber integerValue];
+    switch (index) {
+        case 0:
+            self.calendarURL = @"";
+            break;
+        case 1:
+            self.calendarURL = @"";
+            break;
+        case 2:
+            self.calendarURL = @"";
+            break;
+        case 3:
+            self.calendarURL = @"";
+            break;
+        default:
+            break;
+    }
 }
 
 /*

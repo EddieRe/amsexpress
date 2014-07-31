@@ -235,7 +235,7 @@
         <!--Settings View Controller - Settings-->
         <scene sceneID="q7Y-cW-J2e">
             <objects>
-                <viewController id="ojQ-nS-XwT" userLabel="Settings View Controller - Settings" sceneMemberID="viewController">
+                <viewController id="ojQ-nS-XwT" userLabel="Settings View Controller - Settings" customClass="AMSSettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RCl-iu-5Lw"/>
                         <viewControllerLayoutGuide type="bottom" id="vPs-Qp-L9h"/>
@@ -261,14 +261,36 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Class of:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vea-HP-77p">
+                                <rect key="frame" x="328" y="650" width="112" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Delete All Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLz-sd-PFf">
+                                <rect key="frame" x="321" y="784" width="126" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGQ-bf-ySN">
+                                <rect key="frame" x="344" y="813" width="80" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.1219706633" green="0.1219706633" blue="0.1219706633" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Delete!">
+                                    <color key="titleColor" red="0.98446890965809353" green="0.98177375801906264" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingsTab" id="84y-p5-TDZ"/>
+                    <navigationItem key="navigationItem" id="CSl-vY-R5e"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mk2-Aj-dzy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2993" y="1320"/>
+            <point key="canvasLocation" x="2993" y="1394"/>
         </scene>
         <!--Oasis View Controller - Oasis-->
         <scene sceneID="uYJ-jB-zDe">
