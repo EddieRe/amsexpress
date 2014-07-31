@@ -26,9 +26,9 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)awakeFromNib
 {
-    [super viewDidLoad];
+    [super awakeFromNib];
     
     self.splitVCDelegate = [[AMSNotesSplitVCDelegate alloc] init];
     self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
@@ -42,6 +42,11 @@
     
     self.splitViewController.delegate = self.splitVCDelegate;
     self.tableView.dataSource = self.dataSourceController;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

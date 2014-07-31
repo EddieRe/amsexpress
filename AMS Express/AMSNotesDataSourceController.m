@@ -8,18 +8,14 @@
 
 #import "AMSNotesDataSourceController.h"
 
-#import "AMSNotesPDFViewController.h"
+#import "AMSNotesWebViewController.h"
 
 @implementation AMSNotesDataSourceController
 
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if ([self.detailNavigationVC.topViewController isKindOfClass:[AMSNotesPDFViewController class]]) {
-        return 1;
-    }
-    
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

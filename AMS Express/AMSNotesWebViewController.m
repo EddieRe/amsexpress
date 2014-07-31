@@ -1,18 +1,18 @@
 //
-//  AMSNotesPDFViewController.m
+//  AMSNotesWebViewController.m
 //  AMS Express
 //
 //  Created by Colin on 7/30/14.
 //  Copyright (c) 2014 Alpert Medical School. All rights reserved.
 //
 
-#import "AMSNotesPDFViewController.h"
+#import "AMSNotesWebViewController.h"
 
-@interface AMSNotesPDFViewController ()
+@interface AMSNotesWebViewController ()
 
 @end
 
-@implementation AMSNotesPDFViewController
+@implementation AMSNotesWebViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

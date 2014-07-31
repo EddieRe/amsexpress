@@ -15,5 +15,4 @@
 @property (nonatomic, weak) AMSNotesMasterViewController *masterVC;
 @property (nonatomic, weak) UINavigationController *detailNavigationVC;
 
-
 @end
