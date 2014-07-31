@@ -29,9 +29,15 @@
 {
     [super viewDidLoad];
     
-    [self setCalendarURL];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
+    
 }
 
 - (void)loadRequestFromString:(NSString*)urlString

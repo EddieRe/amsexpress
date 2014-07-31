@@ -7,7 +7,7 @@
         <!--Echo View Controller - Echo-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" userLabel="Echo View Controller - Echo" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" userLabel="Echo View Controller - Echo" customClass="AMSEchoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -16,21 +16,71 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ej5-n5-O85">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LkX-Kt-hAg">
+                                <rect key="frame" x="0.0" y="80" width="768" height="894"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="8Ae-9R-XCQ"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X1O-tA-A8u">
+                                <rect key="frame" x="0.0" y="36" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <navigationItem id="WaP-O7-m87"/>
+                                    <barButtonItem image="appleBack" id="fNQ-pO-4KZ">
+                                        <connections>
+                                            <action selector="goBack" destination="LkX-Kt-hAg" id="d31-Rh-EMl"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="mRJ-Mw-8fK"/>
+                                    <barButtonItem image="appleForward" id="nnG-fq-3em">
+                                        <connections>
+                                            <action selector="goForward" destination="LkX-Kt-hAg" id="QnX-Mw-uHx"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="NMz-ZT-5Di"/>
+                                    <barButtonItem width="486" style="plain" systemItem="fixedSpace" id="miS-Bf-JyW"/>
+                                    <barButtonItem image="EchoTab" id="HPi-Al-ADV">
+                                        <connections>
+                                            <action selector="homeAction:" destination="y5A-lJ-NU6" id="b3T-Tx-DHd"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="2ad-ND-XWE"/>
+                                    <barButtonItem systemItem="refresh" id="EVU-aX-7dd">
+                                        <connections>
+                                            <action selector="reload" destination="LkX-Kt-hAg" id="gz0-oM-Jxm"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="tf2-6K-D3v"/>
+                                    <barButtonItem systemItem="stop" id="wp5-7a-Kq5">
+                                        <connections>
+                                            <action selector="stopLoading" destination="LkX-Kt-hAg" id="MJa-ky-6mm"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
-                            </navigationBar>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.1219706633" green="0.1219706633" blue="0.1219706633" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcy-sW-e5M">
+                                <rect key="frame" x="159" y="47" width="451" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ej5-n5-O85" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailing" id="C9p-N0-R4o"/>
-                            <constraint firstItem="ej5-n5-O85" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="ZQW-8Y-bT4"/>
-                            <constraint firstItem="ej5-n5-O85" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="dYc-7R-70W"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Echo" image="EchoTab" id="cPa-gy-q4n"/>
+                    <connections>
+                        <outlet property="backButton" destination="fNQ-pO-4KZ" id="cQ3-z6-d7n"/>
+                        <outlet property="forwardButton" destination="nnG-fq-3em" id="3Dc-bv-phb"/>
+                        <outlet property="pageTitle" destination="Dcy-sW-e5M" id="NN8-8g-Mlm"/>
+                        <outlet property="refreshButton" destination="EVU-aX-7dd" id="fEJ-2A-e9x"/>
+                        <outlet property="stopButton" destination="wp5-7a-Kq5" id="zLL-Zf-U8F"/>
+                        <outlet property="webView" destination="LkX-Kt-hAg" id="PWF-bR-rYe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -176,7 +226,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXb-cv-fSd">
-                                <rect key="frame" x="0.0" y="78" width="768" height="894"/>
+                                <rect key="frame" x="0.0" y="78" width="768" height="896"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
