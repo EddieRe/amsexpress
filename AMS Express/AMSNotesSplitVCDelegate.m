@@ -18,4 +18,10 @@
     [navItem setLeftBarButtonItem:barButtonItem animated:YES];
 }
 
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    UINavigationItem *navItem = [self.detailNavigationVC.topViewController navigationItem];
+    [navItem setLeftBarButtonItem:nil animated:YES];
+}
+
 @end

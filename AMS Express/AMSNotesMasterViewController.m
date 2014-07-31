@@ -34,7 +34,8 @@
     self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
     
     self.splitVCDelegate.masterVC = self;
-    self.dataSourceController.masterVC = self;
+    self.dataSourceController.tableView = self.tableView;
+    self.dataSourceController.managedObjectContext = self.managedObjectContext;
     
     UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
     self.splitVCDelegate.detailNavigationVC = detailNavigationVC;
