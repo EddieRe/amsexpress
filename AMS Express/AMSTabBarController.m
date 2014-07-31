@@ -49,6 +49,8 @@
 
 - (void)customizeTabBarItems
 {
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
     NSArray *imageNames = @[@"NotesTabSelected", @"EchoTabSelected", @"CalendarTabSelected", @"OasisTabSelected", @"SettingsTabSelected"];
     NSMutableArray *images = [[NSMutableArray alloc] init];
     for (NSString *imageName in imageNames) {
