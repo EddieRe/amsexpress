@@ -56,4 +56,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)canvasAction:(id)sender {
+}
 @end

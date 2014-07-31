@@ -83,7 +83,7 @@
             </objects>
             <point key="canvasLocation" x="4978" y="-1767"/>
         </scene>
-        <!--Notes Master View Controller - Root View Controller-->
+        <!--Notes Master View Controller - Notes-->
         <scene sceneID="NUH-wl-kpg">
             <objects>
                 <tableViewController clearsSelectionOnViewWillAppear="NO" id="o6K-pY-ylx" customClass="AMSNotesMasterViewController" sceneMemberID="viewController">
@@ -105,7 +105,13 @@
                             <outlet property="delegate" destination="o6K-pY-ylx" id="v2o-ik-Yjj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="aqb-NJ-LOp"/>
+                    <navigationItem key="navigationItem" title="Notes" id="aqb-NJ-LOp">
+                        <barButtonItem key="rightBarButtonItem" title="Canvas" id="N7F-eS-DWI">
+                            <connections>
+                                <action selector="canvasAction:" destination="o6K-pY-ylx" id="1Nc-Uw-a2a"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0h-Og-i0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

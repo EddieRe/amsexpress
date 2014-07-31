@@ -17,4 +17,6 @@
 @property (nonatomic, strong) AMSNotesSplitVCDelegate *splitVCDelegate;
 @property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
 
+- (IBAction)canvasAction:(id)sender;
+
 @end
