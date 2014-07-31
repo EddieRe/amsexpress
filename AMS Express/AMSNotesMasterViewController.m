@@ -26,15 +26,16 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)awakeFromNib
 {
-    [super viewDidLoad];
+    [super awakeFromNib];
     
     self.splitVCDelegate = [[AMSNotesSplitVCDelegate alloc] init];
     self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
     
     self.splitVCDelegate.masterVC = self;
-    self.dataSourceController.masterVC = self;
+    self.dataSourceController.tableView = self.tableView;
+    self.dataSourceController.managedObjectContext = self.managedObjectContext;
     
     UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
     self.splitVCDelegate.detailNavigationVC = detailNavigationVC;
@@ -42,6 +43,11 @@
     
     self.splitViewController.delegate = self.splitVCDelegate;
     self.tableView.dataSource = self.dataSourceController;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning

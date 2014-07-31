@@ -1,5 +1,5 @@
 //
-//  AMSNotesPDFViewController.h
+//  AMSNotesWebViewController.h
 //  AMS Express
 //
 //  Created by Colin on 7/30/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AMSNotesPDFViewController : UIViewController
+@interface AMSNotesWebViewController : UIViewController
+
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end

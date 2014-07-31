@@ -10,10 +10,12 @@
 
 @class AMSNotesMasterViewController;
 
-@interface AMSNotesDataSourceController : NSObject <UITableViewDataSource>
+@interface AMSNotesDataSourceController : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, weak) AMSNotesMasterViewController *masterVC;
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+
+@property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UINavigationController *detailNavigationVC;
-
 
 @end

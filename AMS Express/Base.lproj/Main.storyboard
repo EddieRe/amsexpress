@@ -51,10 +51,10 @@
             </objects>
             <point key="canvasLocation" x="3986" y="-1767"/>
         </scene>
-        <!--NotesPDF View Controller-->
+        <!--Notes Web View Controller-->
         <scene sceneID="HPE-s1-GuE">
             <objects>
-                <viewController id="r80-b3-Dd8" customClass="AMSNotesPDFViewController" sceneMemberID="viewController">
+                <viewController id="r80-b3-Dd8" customClass="AMSNotesWebViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Sjh-at-PLi"/>
                         <viewControllerLayoutGuide type="bottom" id="lyB-y3-maE"/>
@@ -62,9 +62,22 @@
                     <view key="view" contentMode="scaleToFill" id="E30-cy-1np">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8GW-7J-GA0">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="r80-b3-Dd8" id="RHP-m3-sw8"/>
+                                </connections>
+                            </webView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Tnq-MS-mwe"/>
+                    <connections>
+                        <outlet property="webView" destination="8GW-7J-GA0" id="8VH-M3-i3d"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Oxy-Zo-RVD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

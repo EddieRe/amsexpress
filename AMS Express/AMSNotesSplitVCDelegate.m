@@ -10,4 +10,18 @@
 
 @implementation AMSNotesSplitVCDelegate
 
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc
+{
+    barButtonItem.title = @"Notes";
+    
+    UINavigationItem *navItem = [self.detailNavigationVC.topViewController navigationItem];
+    [navItem setLeftBarButtonItem:barButtonItem animated:YES];
+}
+
+- (void)splitViewController:(UISplitViewController *)svc willShowViewController:(UIViewController *)aViewController invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    UINavigationItem *navItem = [self.detailNavigationVC.topViewController navigationItem];
+    [navItem setLeftBarButtonItem:nil animated:YES];
+}
+
 @end
