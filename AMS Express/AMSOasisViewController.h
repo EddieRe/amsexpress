@@ -17,6 +17,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *pageTitle;
 
+- (IBAction)stopRefresh:(id)sender;
 - (void)loadRequestFromString:(NSString*)urlString;
 - (IBAction)homeAction:(id)sender;
 @end

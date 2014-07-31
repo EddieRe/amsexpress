@@ -9,6 +9,7 @@
 #import "AMSOasisViewController.h"
 
 @interface AMSOasisViewController ()
+@property BOOL isLoading;
 
 @end
 
@@ -45,6 +46,14 @@
     [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
 }
 
+- (IBAction)stopRefresh:(id)sender {
+    if (self.isLoading) {
+       [self.webView stopLoading];
+    } else {
+        [self.webView reload];
+    }
+}
+
 - (void)loadRequestFromString:(NSString*)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
@@ -62,12 +71,15 @@
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     self.pageTitle.text = @"Loading";
+    self.isLoading = YES;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     NSString* pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.pageTitle.text = pageTitle;
+    self.isLoading = NO;
+    
 }
 
 /*

@@ -217,6 +217,7 @@
                                             <action selector="goBack" destination="GmM-FO-hyA" id="iuJ-nf-Uak"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="Xga-sE-gXy"/>
                                     <barButtonItem image="forw" id="2H0-Id-z3M">
                                         <connections>
                                             <action selector="goForward" destination="GmM-FO-hyA" id="lFU-1g-Pbj"/>
@@ -230,14 +231,10 @@
                                             <action selector="homeAction:" destination="OsG-WP-huh" id="quL-Pk-Loy"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="refresh" id="WRG-tW-4WB">
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="25N-Ly-Phe"/>
+                                    <barButtonItem systemItem="refresh" id="ufa-Lz-bL0">
                                         <connections>
-                                            <action selector="reload" destination="GmM-FO-hyA" id="yw2-qq-oOp"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="stop" id="ufa-Lz-bL0">
-                                        <connections>
-                                            <action selector="stopLoading" destination="GmM-FO-hyA" id="dsg-Pd-LFC"/>
+                                            <action selector="stopRefresh:" destination="OsG-WP-huh" id="Kxm-zI-9Ht"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -259,8 +256,6 @@
                         <outlet property="backButton" destination="WUn-gM-pj0" id="iGc-n2-avP"/>
                         <outlet property="forwardButton" destination="2H0-Id-z3M" id="zpJ-dd-jlW"/>
                         <outlet property="pageTitle" destination="aBZ-aI-1Yv" id="KnJ-0d-uqu"/>
-                        <outlet property="refreshButton" destination="WRG-tW-4WB" id="96H-qQ-zJ7"/>
-                        <outlet property="stopButton" destination="ufa-Lz-bL0" id="ekM-Tk-BXd"/>
                         <outlet property="webView" destination="GmM-FO-hyA" id="B2b-4p-77r"/>
                     </connections>
                 </viewController>
@@ -279,7 +274,7 @@
     <resources>
         <image name="CalendarTab" width="25" height="25"/>
         <image name="EchoTab" width="25" height="25"/>
-        <image name="HomeButton" width="24" height="21"/>
+        <image name="HomeButton" width="22" height="22"/>
         <image name="NotesTab" width="25" height="25"/>
         <image name="OasisTab" width="25" height="25"/>
         <image name="SettingsTab" width="25" height="25"/>
