@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
 
 @property (weak, nonatomic) IBOutlet UILabel *pageTitle;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *stopRefresh;
+
 
 - (IBAction)stopRefresh:(id)sender;
 - (void)loadRequestFromString:(NSString*)urlString;

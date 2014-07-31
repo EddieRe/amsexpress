@@ -47,11 +47,17 @@
 }
 
 - (IBAction)stopRefresh:(id)sender {
+    
+    UIImage *buttonImage;
     if (self.isLoading) {
        [self.webView stopLoading];
+        buttonImage = [UIImage imageNamed:@"appleX"];
     } else {
         [self.webView reload];
+        buttonImage = [UIImage imageNamed:@"appleRefresh"];
     }
+    
+  //  [self.stopRefresh setBackgroundImage:buttonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)loadRequestFromString:(NSString*)urlString
