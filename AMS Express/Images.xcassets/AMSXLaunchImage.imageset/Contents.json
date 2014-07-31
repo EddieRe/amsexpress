@@ -3,12 +3,11 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "HomeButtonHalf.png"
+      "filename" : "AMSXLaunchImage.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "HomeButton.png"
+      "scale" : "2x"
     }
   ],
   "info" : {

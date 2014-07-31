@@ -1,19 +1,19 @@
 //
-//  AMSOasisViewController.m
+//  AMSCalendarViewController.m
 //  AMS Express
 //
-//  Created by Eddie Re on 7/30/14.
+//  Created by Eddie Re on 7/31/14.
 //  Copyright (c) 2014 Alpert Medical School. All rights reserved.
 //
 
-#import "AMSOasisViewController.h"
+#import "AMSCalendarViewController.h"
 
-@interface AMSOasisViewController ()
+@interface AMSCalendarViewController ()
 @property BOOL isLoading;
 
 @end
 
-@implementation AMSOasisViewController
+@implementation AMSCalendarViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,36 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
-}
-
-- (void)loadRequestFromAddressField:(id)addressField
-{
-    NSString *urlString = [addressField text];
-    [self loadRequestFromString:urlString];
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-- (IBAction)homeAction:(id)sender {
-    [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
-}
-
-- (IBAction)stopRefresh:(id)sender {
-    
-    UIImage *buttonImage;
-    if (self.isLoading) {
-       [self.webView stopLoading];
-        buttonImage = [UIImage imageNamed:@"appleX"];
-    } else {
-        [self.webView reload];
-        buttonImage = [UIImage imageNamed:@"appleRefresh"];
-    }
-    
-  //  [self.stopRefresh setBackgroundImage:buttonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self loadRequestFromString:@"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York"];
 }
 
 - (void)loadRequestFromString:(NSString*)urlString
@@ -67,6 +38,14 @@
     [self.webView loadRequest:urlRequest];
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+- (IBAction)homeAction:(id)sender {
+    [self loadRequestFromString:@"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York"];
+}
 - (void)updateButtons
 {
     self.forwardButton.enabled = self.webView.canGoForward;

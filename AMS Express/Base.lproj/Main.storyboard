@@ -166,7 +166,7 @@
         <!--Calendar View Controller - Calendar-->
         <scene sceneID="AxU-pE-56q">
             <objects>
-                <viewController id="y5A-lJ-NU6" userLabel="Calendar View Controller - Calendar" sceneMemberID="viewController">
+                <viewController id="y5A-lJ-NU6" userLabel="Calendar View Controller - Calendar" customClass="AMSCalendarViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HnB-TO-rAR"/>
                         <viewControllerLayoutGuide type="bottom" id="IUa-Dj-3JC"/>
@@ -174,9 +174,72 @@
                     <view key="view" contentMode="scaleToFill" id="IBG-hF-iUh">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXb-cv-fSd">
+                                <rect key="frame" x="0.0" y="78" width="768" height="894"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="y5A-lJ-NU6" id="z6f-0x-PYn"/>
+                                </connections>
+                            </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vC-h8-Fl3">
+                                <rect key="frame" x="0.0" y="26" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="appleBack" id="8z5-Xf-1SQ">
+                                        <connections>
+                                            <action selector="goBack" destination="gXb-cv-fSd" id="9O9-mi-oKc"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="DoY-oF-zrS"/>
+                                    <barButtonItem image="appleForward" id="hQE-kO-0U4">
+                                        <connections>
+                                            <action selector="goForward" destination="gXb-cv-fSd" id="6fM-zY-xtZ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="kSa-2k-Cah"/>
+                                    <barButtonItem width="486" style="plain" systemItem="fixedSpace" id="Esf-1y-enT"/>
+                                    <barButtonItem image="CalendarTab" id="xbl-os-exD">
+                                        <connections>
+                                            <action selector="homeAction:" destination="y5A-lJ-NU6" id="aX8-gb-prr"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="K6O-ev-KeA"/>
+                                    <barButtonItem systemItem="refresh" id="nc1-Ib-2EQ">
+                                        <connections>
+                                            <action selector="reload" destination="gXb-cv-fSd" id="I0s-Qr-rlQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="C4x-3K-Ugz"/>
+                                    <barButtonItem systemItem="stop" id="Q6i-P7-BfC">
+                                        <connections>
+                                            <action selector="stopLoading" destination="gXb-cv-fSd" id="s6i-cr-I4M"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="barTintColor" red="0.1219706633" green="0.1219706633" blue="0.1219706633" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XW-qT-jjG">
+                                <rect key="frame" x="159" y="37" width="451" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" image="CalendarTab" id="se7-Cv-MVX"/>
+                    <connections>
+                        <outlet property="backButton" destination="8z5-Xf-1SQ" id="tK1-yO-ifD"/>
+                        <outlet property="forwardButton" destination="hQE-kO-0U4" id="gcQ-PD-Qd2"/>
+                        <outlet property="pageTitle" destination="3XW-qT-jjG" id="1B6-MC-Pp0"/>
+                        <outlet property="refreshButton" destination="nc1-Ib-2EQ" id="qOk-H2-sgG"/>
+                        <outlet property="stopButton" destination="Q6i-P7-BfC" id="WXN-aN-FDr"/>
+                        <outlet property="webView" destination="gXb-cv-fSd" id="dg8-K2-cnz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ik0-nf-exe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -193,6 +256,25 @@
                     <view key="view" contentMode="scaleToFill" id="8aG-cY-E3P">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" alpha="0.5499999999999996" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AMSXLaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="I6t-Bw-z2K">
+                                <rect key="frame" x="0.0" y="70" width="768" height="905"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJa-XJ-CUc">
+                                <rect key="frame" x="0.0" y="26" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items/>
+                                <color key="barTintColor" red="0.1219706633" green="0.1219706633" blue="0.1219706633" alpha="1" colorSpace="calibratedRGB"/>
+                            </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AMS Express Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po2-P0-um1">
+                                <rect key="frame" x="297" y="37" width="175" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingsTab" id="84y-p5-TDZ"/>
@@ -225,40 +307,42 @@
                                 <rect key="frame" x="0.0" y="26" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem image="back" id="WUn-gM-pj0">
+                                    <barButtonItem image="appleBack" id="WUn-gM-pj0">
                                         <connections>
                                             <action selector="goBack" destination="GmM-FO-hyA" id="iuJ-nf-Uak"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem image="forw" id="2H0-Id-z3M">
+                                    <barButtonItem width="27" style="plain" systemItem="fixedSpace" id="Xga-sE-gXy"/>
+                                    <barButtonItem image="appleForward" id="2H0-Id-z3M">
                                         <connections>
                                             <action selector="goForward" destination="GmM-FO-hyA" id="lFU-1g-Pbj"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="aWV-NW-V9j"/>
                                     <barButtonItem width="486" style="plain" systemItem="fixedSpace" id="PYP-0F-Mtk"/>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="eS2-zS-B9V"/>
-                                    <barButtonItem image="HomeButton" id="RoN-bJ-7eU">
+                                    <barButtonItem image="OasisTab" id="RoN-bJ-7eU">
                                         <connections>
                                             <action selector="homeAction:" destination="OsG-WP-huh" id="quL-Pk-Loy"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="refresh" id="WRG-tW-4WB">
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="25N-Ly-Phe"/>
+                                    <barButtonItem systemItem="refresh" id="ufa-Lz-bL0">
                                         <connections>
-                                            <action selector="reload" destination="GmM-FO-hyA" id="yw2-qq-oOp"/>
+                                            <action selector="stopRefresh:" destination="OsG-WP-huh" id="Kxm-zI-9Ht"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem systemItem="stop" id="ufa-Lz-bL0">
+                                    <barButtonItem width="24" style="plain" systemItem="fixedSpace" id="OBq-de-SqE"/>
+                                    <barButtonItem systemItem="stop" id="UFX-Mn-EhP">
                                         <connections>
-                                            <action selector="stopLoading" destination="GmM-FO-hyA" id="dsg-Pd-LFC"/>
+                                            <action selector="stopLoading" destination="GmM-FO-hyA" id="zWP-jk-o1z"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="barTintColor" red="0.30199697069999998" green="0.13966450259999999" blue="0.026459278419999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="barTintColor" red="0.12197066326530615" green="0.12197066326530615" blue="0.12197066326530615" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBZ-aI-1Yv">
-                                <rect key="frame" x="113" y="37" width="543" height="21"/>
+                                <rect key="frame" x="160" y="37" width="448" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -272,8 +356,8 @@
                         <outlet property="backButton" destination="WUn-gM-pj0" id="iGc-n2-avP"/>
                         <outlet property="forwardButton" destination="2H0-Id-z3M" id="zpJ-dd-jlW"/>
                         <outlet property="pageTitle" destination="aBZ-aI-1Yv" id="KnJ-0d-uqu"/>
-                        <outlet property="refreshButton" destination="WRG-tW-4WB" id="96H-qQ-zJ7"/>
-                        <outlet property="stopButton" destination="ufa-Lz-bL0" id="ekM-Tk-BXd"/>
+                        <outlet property="stopButton" destination="UFX-Mn-EhP" id="jub-er-5yj"/>
+                        <outlet property="stopRefresh" destination="ufa-Lz-bL0" id="lKa-JE-dhz"/>
                         <outlet property="webView" destination="GmM-FO-hyA" id="B2b-4p-77r"/>
                     </connections>
                 </viewController>
@@ -290,15 +374,16 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AMSXLaunchImage" width="1536" height="2048"/>
         <image name="CalendarTab" width="25" height="25"/>
         <image name="EchoTab" width="25" height="25"/>
-        <image name="HomeButton" width="24" height="21"/>
         <image name="NotesTab" width="25" height="25"/>
         <image name="OasisTab" width="25" height="25"/>
         <image name="SettingsTab" width="25" height="25"/>
-        <image name="back" width="15" height="18"/>
-        <image name="forw" width="15" height="18"/>
+        <image name="appleBack" width="22" height="22"/>
+        <image name="appleForward" width="22" height="22"/>
     </resources>
+    <color key="tintColor" red="0.68018574620000005" green="0.0" blue="0.01475949417" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

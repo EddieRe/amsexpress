@@ -3,12 +3,12 @@
     {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "forw.png"
+      "filename" : "appleBackHalf.png"
     },
     {
       "idiom" : "universal",
       "scale" : "2x",
-      "filename" : "forw@2x.png"
+      "filename" : "appleBack.png"
     }
   ],
   "info" : {
