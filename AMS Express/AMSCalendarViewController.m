@@ -29,7 +29,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadRequestFromString:@"fuckme"]; //fuckme
+    [self loadRequestFromString:self.calendarURL];
 }
 
 - (void)loadRequestFromString:(NSString*)urlString
@@ -45,7 +45,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)homeAction:(id)sender {
-    [self loadRequestFromString:@"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York"];
+    [self loadRequestFromString:self.calendarURL];
 }
 - (void)updateButtons
 {
@@ -77,16 +77,16 @@
     NSUInteger index = [indexNumber integerValue];
     switch (index) {
         case 0:
-            self.calendarURL = @"";
+            self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_4sn3cqe9ttnuai8qspo2qdqc84%40group.calendar.google.com&color=%23182C57&ctz=America%2FNew_York";
             break;
         case 1:
-            self.calendarURL = @"";
+            self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_f4se52ubvu18js8kiv41sjrhqo%40group.calendar.google.com&color=%2329527A&ctz=America%2FNew_York";
             break;
         case 2:
-            self.calendarURL = @"";
+            self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York";
             break;
         case 3:
-            self.calendarURL = @"";
+            self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York";
             break;
         default:
             break;
