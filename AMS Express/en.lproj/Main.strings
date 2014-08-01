@@ -1,0 +1,45 @@
+
+/* Class = "IBUILabel"; text = "Loading"; ObjectID = "3XW-qT-jjG"; */
+"3XW-qT-jjG.text" = "Loading";
+
+/* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "84y-p5-TDZ"; */
+"84y-p5-TDZ.title" = "Settings";
+
+/* Class = "IBUILabel"; text = "Loading"; ObjectID = "Dcy-sW-e5M"; */
+"Dcy-sW-e5M.text" = "Loading";
+
+/* Class = "IBUIBarButtonItem"; title = "Canvas"; ObjectID = "N7F-eS-DWI"; */
+"N7F-eS-DWI.title" = "Canvas";
+
+/* Class = "IBUILabel"; text = "Class of:"; ObjectID = "Vea-HP-77p"; */
+"Vea-HP-77p.text" = "Class of:";
+
+/* Class = "IBUILabel"; text = "Loading"; ObjectID = "aBZ-aI-1Yv"; */
+"aBZ-aI-1Yv.text" = "Loading";
+
+/* Class = "IBUINavigationItem"; title = "Notes"; ObjectID = "aqb-NJ-LOp"; */
+"aqb-NJ-LOp.title" = "Notes";
+
+/* Class = "IBUITabBarItem"; title = "Echo"; ObjectID = "cPa-gy-q4n"; */
+"cPa-gy-q4n.title" = "Echo";
+
+/* Class = "IBUILabel"; text = "AMS Express Settings"; ObjectID = "po2-P0-um1"; */
+"po2-P0-um1.text" = "AMS Express Settings";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "pxF-XL-keI"; */
+"pxF-XL-keI.title" = "Item";
+
+/* Class = "IBUITabBarItem"; title = "Calendar"; ObjectID = "se7-Cv-MVX"; */
+"se7-Cv-MVX.title" = "Calendar";
+
+/* Class = "IBUIButton"; normalTitle = "Delete!"; ObjectID = "xGQ-bf-ySN"; */
+"xGQ-bf-ySN.normalTitle" = "Delete!";
+
+/* Class = "IBUILabel"; text = "Delete All Data"; ObjectID = "xLz-sd-PFf"; */
+"xLz-sd-PFf.text" = "Delete All Data";
+
+/* Class = "IBUITabBarItem"; title = "Oasis"; ObjectID = "yBC-VM-N0N"; */
+"yBC-VM-N0N.title" = "Oasis";
+
+/* Class = "IBUITabBarItem"; title = "Notes"; ObjectID = "zxt-fO-gza"; */
+"zxt-fO-gza.title" = "Notes";
