@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AMSSettingsViewController : UIViewController
+@interface AMSSettingsViewController : UIViewController <UIAlertViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITextField *oasisUsernameField;
 @property (weak, nonatomic) IBOutlet UITextField *oasisPasswordField;
 - (IBAction)oasisSaveAction:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *canvasUsernameField;
 @property (weak, nonatomic) IBOutlet UITextField *canvasPasswordField;
 - (IBAction)canvasSaveAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *canvasCheckmark;
+@property (weak, nonatomic) IBOutlet UIImageView *oasisCheckmark;
+
+- (IBAction)deleteDataAction:(id)sender;
 
 @property (nonatomic,strong) NSMutableDictionary *settings;
 @property (nonatomic, strong) UILabel *yearLabel;

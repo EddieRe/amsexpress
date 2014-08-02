@@ -48,7 +48,7 @@
 }
 
 - (IBAction)homeAction:(id)sender {
-        if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"OASIS"]){
+        if ([self.pageTitle.text isEqualToString:@"Home"]){
         [self insertCredentialsWithWebView:self.webView];
     } else {
         [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
@@ -81,8 +81,6 @@
     NSString* pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.pageTitle.text = pageTitle;
     self.isLoading = NO;
-    
-   NSLog(@"url is %@", [webView.request.URL absoluteString]);
     
     if ([self.pageTitle.text isEqualToString:@"Oasis"]){
         self.isLoggedIn = NO;

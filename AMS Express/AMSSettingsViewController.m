@@ -11,7 +11,6 @@
 @interface AMSSettingsViewController ()
 
 
-
 @end
 
 @implementation AMSSettingsViewController
@@ -29,6 +28,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.canvasCheckmark.alpha = 0;
+    self.oasisCheckmark.alpha = 0;
     
     // Load the plist file.
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
@@ -36,13 +37,13 @@
     
     self.yearLabel = [[UILabel alloc] init];
     self.yearLabel.font = [UIFont fontWithName: @"Heiti TC Light" size:12.0];
-    self.yearLabel.frame = CGRectMake(400, 640, 300, 40);
+    self.yearLabel.frame = CGRectMake(398, 640, 300, 40);
     [self.view addSubview:self.yearLabel];
     
     //Create the segmented control
     NSArray *itemArray = [NSArray arrayWithObjects: @"2015", @"2016", @"2017", @"2018", nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-    segmentedControl.frame = CGRectMake(250, 685, 250, 50);
+    segmentedControl.frame = CGRectMake(254, 685, 250, 50);
     segmentedControl.tintColor = [UIColor whiteColor];
     segmentedControl.backgroundColor = [UIColor blackColor];
     NSNumber *indexNumber = [self.settings objectForKey:@"year"];
@@ -54,7 +55,6 @@
 }
 
 -(void) pickOne:(id)sender{
-   
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     NSUInteger index = [segmentedControl selectedSegmentIndex];
     self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
@@ -74,6 +74,13 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
     [self.settings writeToFile:path atomically:YES];
+    
+    self.oasisCheckmark.alpha = 1;
+    [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^(void){
+        self.oasisCheckmark.alpha = 0;
+        
+    }completion:^(BOOL finished){
+}];
 }
 
 - (IBAction)canvasSaveAction:(id)sender {
@@ -85,8 +92,31 @@
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
     [self.settings writeToFile:path atomically:YES];
+    
+    self.canvasCheckmark.alpha = 1;
+    [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^(void){
+        self.canvasCheckmark.alpha = 0;
+        
+    }completion:^(BOOL finished){
+    }];
 }
 
+- (IBAction)deleteDataAction:(id)sender {
+UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all data!"
+        message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
+                    delegate:self
+                    cancelButtonTitle:@"Cancel"
+                    otherButtonTitles:@"OK", nil];
+[downloadAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        //Colin makes this delete data.
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
