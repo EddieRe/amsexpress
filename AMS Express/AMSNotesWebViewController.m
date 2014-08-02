@@ -66,7 +66,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.htmlParser updateLinksArrayWithHTML:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
+    NSMutableString *html = [NSMutableString stringWithString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
+    CFStringRef transform = CFSTR("Any-Hex/Java");
+    CFStringTransform((__bridge CFMutableStringRef)html, NULL, transform, YES);
+    
+    NSLog(@"%@", html);
+    [self.htmlParser updateLinksArrayWithHTML:html];
 }
 
 @end
