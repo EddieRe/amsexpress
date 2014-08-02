@@ -12,7 +12,12 @@
 #import "AMSNotesMasterViewController.h"
 #import "AMSNotesDataSourceController.h"
 
+#import "AMSSettingsFileManager.h"
+
 @interface AMSNotesWebViewController ()
+@property BOOL isLoading;
+@property BOOL isLoggedIn;
+@property NSString *canvasURL;
 
 @end
 
@@ -22,7 +27,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+     //custom initializing.
     }
     return self;
 }
@@ -36,6 +41,9 @@
 {
     [super viewDidLoad];
     
+    [self setCanvasURL];
+    [self loadRequestFromString:self.canvasURL];
+    
     self.htmlParser = [[AMSNotesHTMLParser alloc] init];
     UINavigationController *masterNav = (UINavigationController *)[self.splitViewController.viewControllers firstObject];
     AMSNotesMasterViewController *masterVC = (AMSNotesMasterViewController *)[masterNav topViewController];
@@ -43,12 +51,33 @@
     
     NSLog(@"datasourcecontroller: %@\nhtmlparser: %@\ndelegate: %@", masterVC.dataSourceController, self.htmlParser, self.htmlParser.delegate);
     
+    UIBarButtonItem *stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
+    
+    UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshAction)];
+    
+    UIBarButtonItem *composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composeAction)];
+    
+    UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    
+    UIBarButtonItem *forwardBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(forwardAction)];
+   
+    UIBarButtonItem *rewindBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(rewindAction)];
+    
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, composeBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
     
     NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"Canvas"])
+    {
+        [self insertCredentialsWithWebView:self.webView];
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -63,9 +92,27 @@
 }
 
 #pragma mark - Web View delegate methods
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    self.pageTitle.text = @"Loading";
+    self.isLoading = YES;
+    self.currentURL = [webView.request.URL absoluteString];
+}
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    NSString* pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    self.pageTitle.text = pageTitle;
+    self.isLoading = NO;
+    
+    if ([self.pageTitle.text isEqualToString:@"Canvas"]){
+        self.isLoggedIn = NO;
+    }
+    if (!self.isLoggedIn) {
+        [self insertCredentialsWithWebView:webView];
+        self.isLoggedIn = YES;
+    }
+    
     NSMutableString *html = [NSMutableString stringWithString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
     CFStringRef transform = CFSTR("Any-Hex/Java");
     CFStringTransform((__bridge CFMutableStringRef)html, NULL, transform, YES);
@@ -73,5 +120,80 @@
     NSLog(@"%@", html);
     [self.htmlParser updateLinksArrayWithHTML:html];
 }
+
+-(void)rewindAction
+{
+    [self.webView goBack];
+    NSLog(@"rewind button clicked");
+}
+
+-(void)forwardAction
+{
+    [self.webView goForward];
+    NSLog(@"forward button clicked");
+}
+
+-(void)composeAction
+{
+    [self setCanvasURL];
+    [self loadRequestFromString:self.canvasURL];
+    NSLog(@"compose button clicked");
+}
+
+-(void)refreshAction
+{
+    [self.webView reload];
+    NSLog(@"refresh button clicked");
+}
+
+-(void)stopAction
+{
+    [self.webView stopLoading];
+    NSLog(@"stop button clicked");
+}
+- (void)insertCredentialsWithWebView:(UIWebView *)webView
+{
+    NSString *path = [AMSSettingsFileManager settingsPath];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    NSString* userId = [settings objectForKey:@"canvasUsername"];
+    NSString* password =  [settings objectForKey:@"canvasPassword"];
+    
+    if(userId != nil && password != nil ){
+        
+        NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementById('username').value='%@'", userId];
+        NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementById('password').value='%@'", password];
+        
+        [webView stringByEvaluatingJavaScriptFromString:jScriptString1];
+        [webView stringByEvaluatingJavaScriptFromString:jScriptString2];
+        [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('button')[0].click()"];
+        
+    }
+}
+- (void)setCanvasURL
+{
+    NSString *path = [AMSSettingsFileManager settingsPath];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    NSNumber *indexNumber = [settings objectForKey:@"year"];
+    NSUInteger index = [indexNumber integerValue];
+    switch (index) {
+        case 0:
+            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            break;
+        case 1:
+            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            break;
+        case 2:
+            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            break;
+        case 3:
+            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            break;
+        default:
+            break;
+    }
+}
+
 
 @end
