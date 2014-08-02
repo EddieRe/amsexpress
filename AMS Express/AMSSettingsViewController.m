@@ -20,7 +20,6 @@
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -126,7 +125,7 @@
     {
         // Colin makes this delete data.
         UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:nil
-            message:[[NSString alloc] initWithFormat:@"Your files have been deleted."]
+            message:[[NSString alloc] initWithFormat:@"Your notes have been deleted."]
                 delegate:nil
                 cancelButtonTitle:@"OK"
                 otherButtonTitles:nil];
