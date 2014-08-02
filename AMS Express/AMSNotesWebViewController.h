@@ -14,6 +14,15 @@
 
 @property (nonatomic, strong) AMSNotesHTMLParser *htmlParser;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property UINavigationController *masterNav;
+@property UIBarButtonItem *organizeBarButtonItem;
+@property UIBarButtonItem *rewindBarButtonItem;
+@property UIBarButtonItem *composeBarButtonItem;
+@property UIBarButtonItem *forwardBarButtonItem;
+@property UIBarButtonItem *stopBarButtonItem;
+@property UIBarButtonItem *refreshBarButtonItem;
+@property UILabel *pageTitle;
+@property (weak,nonatomic) NSString *currentURL;
 
 - (void)loadRequestFromString:(NSString *)urlString;
 

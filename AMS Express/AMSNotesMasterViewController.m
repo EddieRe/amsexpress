@@ -41,7 +41,6 @@
     self.splitVCDelegate.detailNavigationVC = detailNavigationVC;
     self.splitViewController.delegate = self.splitVCDelegate;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -63,7 +62,6 @@
     
     self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

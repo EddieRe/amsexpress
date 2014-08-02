@@ -20,19 +20,19 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+//    #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     
     UISplitViewController *notesSplitViewController = (UISplitViewController *)[tabBarController.viewControllers firstObject];
     UINavigationController *notesMasterNavigationController = (UINavigationController *)[notesSplitViewController.viewControllers firstObject];
     AMSNotesMasterViewController *notesMasterViewController =  (AMSNotesMasterViewController *)[notesMasterNavigationController topViewController];
     notesMasterViewController.managedObjectContext = self.managedObjectContext;
-
+//    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
     
     [AMSSettingsFileManager instantiateSettingsPlist];
     
     return YES;
 }
-							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
