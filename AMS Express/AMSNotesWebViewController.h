@@ -23,7 +23,7 @@
 @property UIBarButtonItem *forwardBarButtonItem;
 @property UIBarButtonItem *stopBarButtonItem;
 @property UIBarButtonItem *refreshBarButtonItem;
-@property UILabel *pageTitle;
+@property (weak, nonatomic) IBOutlet UILabel *pageTitle;
 @property (weak,nonatomic) NSString *currentURL;
 
 - (void)loadRequestFromString:(NSString *)urlString;

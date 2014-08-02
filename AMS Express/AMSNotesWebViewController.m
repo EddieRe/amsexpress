@@ -73,7 +73,7 @@
 {
     [super viewDidAppear:animated];
     
-    if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"Canvas"])
+    if ([self.pageTitle.text isEqualToString:@"Brown University Authentication for Web-Based Services"])
     {
         [self insertCredentialsWithWebView:self.webView];
     }
@@ -124,33 +124,34 @@
 -(void)rewindAction
 {
     [self.webView goBack];
-    NSLog(@"rewind button clicked");
 }
 
 -(void)forwardAction
 {
     [self.webView goForward];
-    NSLog(@"forward button clicked");
+}
+
+-(void)openInAction
+{
+    //Colin makes this Open-in.
 }
 
 -(void)composeAction
 {
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
-    NSLog(@"compose button clicked");
 }
 
 -(void)refreshAction
 {
     [self.webView reload];
-    NSLog(@"refresh button clicked");
 }
 
 -(void)stopAction
 {
     [self.webView stopLoading];
-    NSLog(@"stop button clicked");
 }
+
 - (void)insertCredentialsWithWebView:(UIWebView *)webView
 {
     NSString *path = [AMSSettingsFileManager settingsPath];
@@ -185,7 +186,7 @@
             self.canvasURL = @"https://canvas.brown.edu/courses/641699";
             break;
         case 2:
-            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            self.canvasURL = @"https://canvas.brown.edu/courses/801524";
             break;
         case 3:
             self.canvasURL = @"https://canvas.brown.edu/courses/641699";

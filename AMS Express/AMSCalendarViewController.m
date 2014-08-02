@@ -35,6 +35,13 @@
     [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
 }
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    // Do any additional setup after loading the view.
+    [self setCalendarURL];
+    [self loadRequestFromString:self.calendarURL];
+}
 - (void)loadRequestFromString:(NSString*)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
@@ -90,7 +97,7 @@
             self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York";
             break;
         case 3:
-            self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_ttutoa6671kcod39l4aqnpe3ig%40group.calendar.google.com&color=%231B887A&ctz=America%2FNew_York";
+            self.calendarURL = @"https://www.google.com/calendar/embed?mode=AGENDA&height=600&wkst=1&bgcolor=%23FFFFFF&src=brown.edu_nisvel71gbsrbg3gn5jlth9a28%40group.calendar.google.com&color=%2328754E&ctz=America%2FNew_York";
             break;
         default:
             break;

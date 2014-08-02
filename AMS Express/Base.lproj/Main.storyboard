@@ -132,8 +132,8 @@
                                     <outlet property="delegate" destination="r80-b3-Dd8" id="RHP-m3-sw8"/>
                                 </connections>
                             </webView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCW-wh-O1O">
-                                <rect key="frame" x="350" y="31" width="68" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCW-wh-O1O">
+                                <rect key="frame" x="76" y="78" width="617" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -150,6 +150,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eep-gs-eni"/>
                     <connections>
+                        <outlet property="pageTitle" destination="MCW-wh-O1O" id="exS-DR-pcX"/>
                         <outlet property="webView" destination="8GW-7J-GA0" id="8VH-M3-i3d"/>
                     </connections>
                 </viewController>
