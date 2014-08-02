@@ -23,21 +23,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSString *path = [AMSSettingsFileManager settingsPath];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
     // Do any additional setup after loading the view.
+    
     self.canvasCheckmark.alpha = 0;
     self.oasisCheckmark.alpha = 0;
     
-    // Load the plist file.
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-    self.settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    self.oasisUsernameField.text = [settings objectForKey:@"oasisUsername"];
+    self.oasisPasswordField.text = [settings objectForKey:@"oasisPassword"];
+    self.canvasUsernameField.text = [settings objectForKey:@"canvasUsername"];
+    self.canvasPasswordField.text = [settings objectForKey:@"canvasPassword"];
     
-    //Create the segmented control
-    
-//    NSArray *itemArray = [NSArray arrayWithObjects: @"2015", @"2016", @"2017", @"2018", nil];
-//    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-//   self.segmentedControl.frame = CGRectMake(259, 677, 250, 50);
-//    segmentedControl.tintColor = [UIColor whiteColor];
-//    segmentedControl.backgroundColor = [UIColor blackColor];
     NSNumber *indexNumber = [self.settings objectForKey:@"year"];
     self.segmentedControl.selectedSegmentIndex = [indexNumber integerValue];
     [self.segmentedControl addTarget:self
@@ -50,9 +47,8 @@
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     NSUInteger index = [segmentedControl selectedSegmentIndex];
     self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
-    
     [self.settings setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"year"];
-    
+    NSLog(@"%d",index);
     NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
 }

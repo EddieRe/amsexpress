@@ -102,8 +102,6 @@
     
     NSString* userId = [settings objectForKey:@"oasisUsername"];
     NSString* password =  [settings objectForKey:@"oasisPassword"];
-    NSLog(@"%@, %@", userId, password);
-
     
     if(userId != nil && password != nil ){
         

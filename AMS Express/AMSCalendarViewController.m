@@ -73,7 +73,8 @@
 - (void)setCalendarURL
 {
     NSString *path = [AMSSettingsFileManager settingsPath];
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
     NSNumber *indexNumber = [settings objectForKey:@"year"];
     NSUInteger index = [indexNumber integerValue];
     switch (index) {
