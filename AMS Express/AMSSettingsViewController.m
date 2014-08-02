@@ -24,23 +24,22 @@
 {
     [super viewDidLoad];
     NSString *path = [AMSSettingsFileManager settingsPath];
-    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    self.settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     // Do any additional setup after loading the view.
     
     self.canvasCheckmark.alpha = 0;
     self.oasisCheckmark.alpha = 0;
     
-    self.oasisUsernameField.text = [settings objectForKey:@"oasisUsername"];
-    self.oasisPasswordField.text = [settings objectForKey:@"oasisPassword"];
-    self.canvasUsernameField.text = [settings objectForKey:@"canvasUsername"];
-    self.canvasPasswordField.text = [settings objectForKey:@"canvasPassword"];
+    self.oasisUsernameField.text = [self.settings objectForKey:@"oasisUsername"];
+    self.oasisPasswordField.text = [self.settings objectForKey:@"oasisPassword"];
+    self.canvasUsernameField.text = [self.settings objectForKey:@"canvasUsername"];
+    self.canvasPasswordField.text = [self.settings objectForKey:@"canvasPassword"];
     
     NSNumber *indexNumber = [self.settings objectForKey:@"year"];
     self.segmentedControl.selectedSegmentIndex = [indexNumber integerValue];
     [self.segmentedControl addTarget:self
                          action:@selector(pickOne:)
                forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:self.segmentedControl];
 }
 
 - (void)pickOne:(id)sender{
@@ -48,7 +47,7 @@
     NSUInteger index = [segmentedControl selectedSegmentIndex];
     self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
     [self.settings setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"year"];
-    NSLog(@"%d",index);
+    NSLog(@"%lu", (unsigned long)index);
     NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
 }
@@ -95,9 +94,7 @@
     self.canvasCheckmark.alpha = 1;
     [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^(void){
         self.canvasCheckmark.alpha = 0;
-        
-    }completion:^(BOOL finished){
-    }];
+    } completion:nil];
 }
 
 - (IBAction)deleteDataAction:(id)sender {

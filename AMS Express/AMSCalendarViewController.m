@@ -11,6 +11,7 @@
 #import "AMSSettingsFileManager.h"
 
 @interface AMSCalendarViewController ()
+
 @property BOOL isLoading;
 @property NSString *calendarURL;
 
@@ -74,6 +75,7 @@
 {
     NSString *path = [AMSSettingsFileManager settingsPath];
     NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    NSLog(@"%@", [settings objectForKey:@"year"]);
     
     NSNumber *indexNumber = [settings objectForKey:@"year"];
     NSUInteger index = [indexNumber integerValue];
