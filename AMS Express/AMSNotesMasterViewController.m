@@ -10,7 +10,10 @@
 
 #import "AMSNotesSplitVCDelegate.h"
 #import "AMSNotesDataSourceController.h"
+#import "AMSNotesAlertViewDelegate.h"
 #import "AMSNotesWebViewController.h"
+
+#import "SavedPDF.h"
 
 @interface AMSNotesMasterViewController ()
 
@@ -46,11 +49,16 @@
     
     self.dataSourceController.managedObjectContext = self.managedObjectContext;
     self.dataSourceController.tableView = self.tableView;
-    
+    self.dataSourceController.delegate = self;
     UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
     self.dataSourceController.detailNavigationVC = detailNavigationVC;
-    
     self.tableView.dataSource = self.dataSourceController;
+    
+    self.alertViewDelegate = [[AMSNotesAlertViewDelegate alloc] init];
+    self.alertViewDelegate.masterVC = self;
+    self.alertViewDelegate.managedObjectContext = self.managedObjectContext;
+    
+    self.selectedLinks = [[NSMutableArray alloc] init];
     
     self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
 }
@@ -60,8 +68,90 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)canvasAction:(id)sender {
-    [self.webVC loadRequestFromString:@"http://www2.hawaii.edu/~kinzie/documents/CV%20&%20pubs/list%20of%20pdfs.htm"];
+- (IBAction)getPDFAction:(id)sender {
+    if (self.dataSourceController.hasParsedLinks) {
+        if ([self.selectedLinks isEqualToArray:@[]]) {
+            [self noSelectionsAlert];
+        } else {
+            [self confirmAlert];
+        }
+    } else {
+        [self.webVC loadRequestFromString:@"http://canvas.brown.edu"];
+    }
+}
+
+#pragma mark - UIAlerts
+
+- (void)confirmAlert
+{
+    NSString *message = [NSString stringWithFormat:@"Are you sure you want to download %lu PDFs?", (unsigned long)self.selectedLinks.count];
+    UIAlertView *confirmAlert = [[UIAlertView alloc] initWithTitle:@"Confirm Your Download"
+                                                           message:message
+                                                          delegate:self.alertViewDelegate
+                                                 cancelButtonTitle:@"Cancel"
+                                                 otherButtonTitles:@"OK", nil];
+    [confirmAlert show];
+}
+
+- (void)noSelectionsAlert
+{
+    UIAlertView *noSelectionsAlert = [[UIAlertView alloc] initWithTitle:@"No Selections"
+                                                                message:@"Please select PDFs from the \"PDFs on this page\" section before downloading."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+    [noSelectionsAlert show];
+}
+
+#pragma mark - Table View delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.numberOfSections == 2 && indexPath.section == 0) {
+        if ([self addOrRemoveAnchorPartsFromSelectedLinks:self.dataSourceController.links[indexPath.row]]) {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        };
+    } else {
+        SavedPDF *savedPDF = [self.dataSourceController fetchedResultObjectAtIndexPath:indexPath];
+        NSLog(@"else firing. localURL: %@", savedPDF.localURL);
+        NSURL *fileURL = [NSURL fileURLWithPath:savedPDF.localURL];
+        NSURLRequest *fileURLRequest = [[NSURLRequest alloc] initWithURL:fileURL];
+        [self.webVC.webView loadRequest:fileURLRequest];
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Data Source Controller delegate
+
+- (void)dataSourceController:(AMSNotesDataSourceController *)dataSourceController didResetLinksWithResult:(BOOL)result
+{
+    if (result) {
+        self.getPDFButton.title = @"Download Selected";
+    } else {
+        self.getPDFButton.title = @"Go to Canvas";
+    }
+}
+
+- (BOOL)dataSourceController:(AMSNotesDataSourceController *)dataSourceController shouldMarkCellForAnchorParts:(NSArray *)anchorParts
+{
+    if ([self.selectedLinks containsObject:anchorParts]) return YES;
+    else return NO;
+}
+
+#pragma mark - Private methods
+
+- (BOOL)addOrRemoveAnchorPartsFromSelectedLinks:(NSArray *)anchorParts
+{
+    if ([self.selectedLinks containsObject:anchorParts]) {
+        [self.selectedLinks removeObject:anchorParts];
+        return YES;
+    } else {
+        [self.selectedLinks addObject:anchorParts];
+        return NO;
+    }
 }
 
 @end

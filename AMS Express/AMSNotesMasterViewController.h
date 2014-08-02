@@ -8,20 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@class AMSNotesDataSourceController, AMSNotesSplitVCDelegate, AMSNotesWebViewController;
+#import "AMSNotesDataSourceController.h"
 
-@interface AMSNotesMasterViewController : UITableViewController
+@class AMSNotesSplitVCDelegate, AMSNotesWebViewController, AMSNotesAlertViewDelegate;
+
+@interface AMSNotesMasterViewController : UITableViewController <AMSNotesDataSourceControllerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @property (nonatomic, strong) AMSNotesSplitVCDelegate *splitVCDelegate;
 @property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
 @property (nonatomic, weak) AMSNotesWebViewController *webVC;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *canvasButton;
+@property (nonatomic, strong) AMSNotesAlertViewDelegate *alertViewDelegate;
 
-- (IBAction)canvasAction:(id)sender;
 
-@property (nonatomic, strong) NSString *theString;
+@property (nonatomic, strong) NSMutableArray *selectedLinks;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *getPDFButton;
 
+- (IBAction)getPDFAction:(id)sender;
 
 @end

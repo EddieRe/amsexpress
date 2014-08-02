@@ -9,6 +9,7 @@
 #import "AMSNotesDataSourceController.h"
 
 #import "AMSNotesWebViewController.h"
+#import "SavedPDF.h"
 
 @implementation AMSNotesDataSourceController
 
@@ -26,44 +27,14 @@
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
     
-    if (self.hasParsedLinks) {
-        switch (section) {
-            case 0:
-                return self.links.count;
-                break;
-            
-            case 1:
-                return [sectionInfo numberOfObjects];
-                break;
-                
-            default:
-                return 0;
-                break;
-        }
-    } else {
-        return [sectionInfo numberOfObjects];
-    }
+    if (self.hasParsedLinks && section == 0) return self.links.count;
+    else return [sectionInfo numberOfObjects];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (self.hasParsedLinks) {
-        switch (section) {
-            case 0:
-                return @"PDFs on page";
-                break;
-            
-            case 1:
-                return @"Saved PDFs";
-                break;
-                
-            default:
-                return @"";
-                break;
-        }
-    } else {
-        return @"Saved PDFs";
-    }
+    if (self.hasParsedLinks && section == 0) return @"PDFs on page";
+    else return @"Saved PDFs";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,21 +49,16 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.hasParsedLinks) {
+    if (self.hasParsedLinks && [indexPath section] == 0) {
         NSArray *anchorParts = self.links[indexPath.row];
-
-        switch ([indexPath section]) {
-            case 0:
-                NSLog(@"anchor part 0: %@", anchorParts[0]);
-                cell.textLabel.text = anchorParts[0];
-                break;
-            
-            case 1:
-                break;
-                
-            default:
-                break;
-        }
+        cell.textLabel.text = anchorParts[0];
+        if ([self.delegate dataSourceController:self shouldMarkCellForAnchorParts:anchorParts]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        } else cell.accessoryType = UITableViewCellAccessoryNone;
+    } else {
+        SavedPDF *savedPDF = [self fetchedResultObjectAtIndexPath:indexPath];
+        cell.textLabel.text = savedPDF.name;
+        cell.accessoryType = UITableViewCellAccessoryNone;
     }
 }
 
@@ -102,6 +68,7 @@
     self.links = links;
     NSLog(@"%@", self.links);
     [self.tableView reloadData];
+    [self.delegate dataSourceController:self didResetLinksWithResult:self.hasParsedLinks];
 }
 
 #pragma mark - Convenience methods
@@ -113,6 +80,16 @@
     
     if ([self.links isEqualToArray:@[]]) return NO;
     else return YES;
+}
+
+- (SavedPDF *)fetchedResultObjectAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger indexPathArray[2];
+    indexPathArray[0] = 0;
+    indexPathArray[1] = indexPath.row;
+    NSIndexPath *correctedIndexPath = [NSIndexPath indexPathWithIndexes:indexPathArray length:2];
+    
+    return [self.fetchedResultsController objectAtIndexPath:correctedIndexPath];
 }
 
 
@@ -152,57 +129,57 @@
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.tableView beginUpdates];
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
+//           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
+//{
+//    switch(type) {
+//        case NSFetchedResultsChangeInsert:
+//            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeDelete:
+//            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//    }
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+//       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+//      newIndexPath:(NSIndexPath *)newIndexPath
+//{
+//    UITableView *tableView = self.tableView;
+//    
+//    switch(type) {
+//        case NSFetchedResultsChangeInsert:
+//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeDelete:
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//            
+//        case NSFetchedResultsChangeUpdate:
+//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+//            break;
+//            
+//        case NSFetchedResultsChangeMove:
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            break;
+//    }
+//}
+//
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.tableView reloadData];
+//    [self.tableView endUpdates];
+//}
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
-{
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    UITableView *tableView = self.tableView;
-    
-    switch(type) {
-        case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-            
-        case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-            break;
-            
-        case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
-
-/*
  // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
  
  - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
@@ -210,6 +187,6 @@
  // In the simplest, most efficient, case, reload the table view.
     [self.tableView reloadData];
  }
- */
+ 
 
 @end

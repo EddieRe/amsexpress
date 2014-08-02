@@ -1,4 +1,7 @@
 
+/* Class = "IBUILabel"; text = "Subtitle"; ObjectID = "24U-RL-k0f"; */
+"24U-RL-k0f.text" = "Subtitle";
+
 /* Class = "IBUILabel"; text = "Loading"; ObjectID = "3XW-qT-jjG"; */
 "3XW-qT-jjG.text" = "Loading";
 
@@ -14,8 +17,8 @@
 /* Class = "IBUILabel"; text = "Oasis"; ObjectID = "LuV-Dm-Hhs"; */
 "LuV-Dm-Hhs.text" = "Oasis";
 
-/* Class = "IBUIBarButtonItem"; title = "Canvas"; ObjectID = "N7F-eS-DWI"; */
-"N7F-eS-DWI.title" = "Canvas";
+/* Class = "IBUIBarButtonItem"; title = "Go to Canvas"; ObjectID = "N7F-eS-DWI"; */
+"N7F-eS-DWI.title" = "Go to Canvas";
 
 /* Class = "IBUILabel"; text = "Password"; ObjectID = "O2Z-1w-Gho"; */
 "O2Z-1w-Gho.text" = "Password";
@@ -38,14 +41,14 @@
 /* Class = "IBUILabel"; text = "Loading"; ObjectID = "aBZ-aI-1Yv"; */
 "aBZ-aI-1Yv.text" = "Loading";
 
-/* Class = "IBUINavigationItem"; title = "Notes"; ObjectID = "aqb-NJ-LOp"; */
-"aqb-NJ-LOp.title" = "Notes";
-
 /* Class = "IBUILabel"; text = "Username"; ObjectID = "baD-Ox-0fW"; */
 "baD-Ox-0fW.text" = "Username";
 
 /* Class = "IBUITabBarItem"; title = "Echo"; ObjectID = "cPa-gy-q4n"; */
 "cPa-gy-q4n.title" = "Echo";
+
+/* Class = "IBUILabel"; text = "Title"; ObjectID = "evz-kR-7YO"; */
+"evz-kR-7YO.text" = "Title";
 
 /* Class = "IBUILabel"; text = "Office of Medical Education"; ObjectID = "ewY-QN-iI6"; */
 "ewY-QN-iI6.text" = "Office of Medical Education";
