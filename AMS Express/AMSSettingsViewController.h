@@ -23,5 +23,6 @@
 - (IBAction)deleteDataAction:(id)sender;
 
 @property (nonatomic, strong) NSMutableDictionary *settings;
-@property (nonatomic, strong) UILabel *yearLabel;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (weak, nonatomic) IBOutlet UILabel *yearLabel;
 @end
