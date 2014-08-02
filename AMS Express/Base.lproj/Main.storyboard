@@ -16,16 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LkX-Kt-hAg">
-                                <rect key="frame" x="0.0" y="61" width="768" height="913"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LkX-Kt-hAg">
+                                <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="8rJ-Kc-sve" id="8Ae-9R-XCQ"/>
                                 </connections>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="X1O-tA-A8u">
-                                <rect key="frame" x="0.0" y="21" width="768" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X1O-tA-A8u">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="appleBack" id="fNQ-pO-4KZ">
@@ -62,8 +62,8 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.14886519160583941" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcy-sW-e5M">
-                                <rect key="frame" x="159" y="32" width="451" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcy-sW-e5M">
+                                <rect key="frame" x="351" y="34" width="68" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,6 +71,17 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X1O-tA-A8u" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="A0Q-yj-ofg"/>
+                            <constraint firstAttribute="trailing" secondItem="LkX-Kt-hAg" secondAttribute="trailing" id="BdE-6e-Prx"/>
+                            <constraint firstItem="X1O-tA-A8u" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="DoM-QD-Kfz"/>
+                            <constraint firstAttribute="trailing" secondItem="X1O-tA-A8u" secondAttribute="trailing" id="Drz-Bs-Vfq"/>
+                            <constraint firstItem="LkX-Kt-hAg" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="HUz-5p-P2L"/>
+                            <constraint firstItem="X1O-tA-A8u" firstAttribute="centerX" secondItem="Dcy-sW-e5M" secondAttribute="centerX" constant="-0.5" id="JL0-BX-y1Z"/>
+                            <constraint firstItem="LkX-Kt-hAg" firstAttribute="top" secondItem="X1O-tA-A8u" secondAttribute="bottom" id="mtT-6q-0XU"/>
+                            <constraint firstItem="X1O-tA-A8u" firstAttribute="centerY" secondItem="Dcy-sW-e5M" secondAttribute="centerY" constant="-0.5" id="qKP-xW-eRe"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="LkX-Kt-hAg" secondAttribute="bottom" id="xkS-Im-tvP"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Echo" image="EchoTab" id="cPa-gy-q4n"/>
                     <connections>
@@ -234,16 +245,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gXb-cv-fSd">
-                                <rect key="frame" x="0.0" y="65" width="768" height="909"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXb-cv-fSd">
+                                <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="y5A-lJ-NU6" id="z6f-0x-PYn"/>
                                 </connections>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8vC-h8-Fl3">
-                                <rect key="frame" x="0.0" y="21" width="768" height="44"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8vC-h8-Fl3">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="appleBack" id="8z5-Xf-1SQ">
@@ -280,8 +291,8 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.15014826642335766" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XW-qT-jjG">
-                                <rect key="frame" x="159" y="32" width="451" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XW-qT-jjG">
+                                <rect key="frame" x="351" y="34" width="68" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -289,6 +300,17 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8vC-h8-Fl3" secondAttribute="trailing" id="0NB-1v-Jj2"/>
+                            <constraint firstItem="3XW-qT-jjG" firstAttribute="centerX" secondItem="8vC-h8-Fl3" secondAttribute="centerX" constant="0.5" id="2bQ-0m-Zv4"/>
+                            <constraint firstItem="IUa-Dj-3JC" firstAttribute="top" secondItem="gXb-cv-fSd" secondAttribute="bottom" id="3mc-Eh-aRD"/>
+                            <constraint firstItem="gXb-cv-fSd" firstAttribute="leading" secondItem="IBG-hF-iUh" secondAttribute="leading" id="46F-BY-FGU"/>
+                            <constraint firstItem="gXb-cv-fSd" firstAttribute="top" secondItem="8vC-h8-Fl3" secondAttribute="bottom" id="fww-wg-gTl"/>
+                            <constraint firstItem="8vC-h8-Fl3" firstAttribute="top" secondItem="HnB-TO-rAR" secondAttribute="bottom" id="gZ3-si-AOT"/>
+                            <constraint firstAttribute="trailing" secondItem="gXb-cv-fSd" secondAttribute="trailing" id="h13-t9-XKY"/>
+                            <constraint firstItem="3XW-qT-jjG" firstAttribute="centerY" secondItem="8vC-h8-Fl3" secondAttribute="centerY" constant="0.5" id="kRp-Bl-sKS"/>
+                            <constraint firstItem="8vC-h8-Fl3" firstAttribute="leading" secondItem="IBG-hF-iUh" secondAttribute="leading" id="uqj-xb-gqT"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Calendar" image="CalendarTab" id="se7-Cv-MVX"/>
                     <connections>
@@ -316,15 +338,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zJa-XJ-CUc">
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJa-XJ-CUc">
                                 <rect key="frame" x="0.0" y="21" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.15234375" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AMS Express Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po2-P0-um1">
-                                <rect key="frame" x="297" y="32" width="175" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMS Express Settings" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="po2-P0-um1">
+                                <rect key="frame" x="301" y="35" width="167" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -461,14 +483,14 @@
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="25"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Warren Alpert Medical School of Brown University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6g-zf-0NU">
-                                <rect key="frame" x="17" y="940" width="330" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warren Alpert Medical School of Brown University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6g-zf-0NU">
+                                <rect key="frame" x="15" y="951" width="330" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Office of Medical Education" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewY-QN-iI6">
-                                <rect key="frame" x="17" y="920" width="219" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office of Medical Education" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewY-QN-iI6">
+                                <rect key="frame" x="15" y="934" width="192" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Light" family="Heiti TC" pointSize="14"/>
                                 <nil key="highlightedColor"/>
@@ -486,19 +508,42 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.1219706633" green="0.1219706633" blue="0.1219706633" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sKc-QJ-DDh">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKc-QJ-DDh">
                                 <rect key="frame" x="0.0" y="114" width="768" height="233"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="amsshadow" translatesAutoresizingMaskIntoConstraints="NO" id="fbI-Ye-gjg">
-                                        <rect key="frame" x="209" y="12" width="350" height="210"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amsshadow" translatesAutoresizingMaskIntoConstraints="NO" id="88A-Ns-yUn">
+                                        <rect key="frame" x="234" y="27" width="300" height="180"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="4EN-Q3-mic"/>
+                                            <constraint firstAttribute="height" constant="180" id="JVm-2a-cMo"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="88A-Ns-yUn" secondAttribute="centerY" constant="-0.5" id="26s-Aa-S63"/>
+                                    <constraint firstAttribute="centerX" secondItem="88A-Ns-yUn" secondAttribute="centerX" id="9Qr-2G-SID"/>
+                                    <constraint firstAttribute="height" constant="233" id="fyo-2K-svk"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a6g-zf-0NU" firstAttribute="top" secondItem="ewY-QN-iI6" secondAttribute="bottom" constant="3" id="5zi-EV-g3W"/>
+                            <constraint firstItem="zJa-XJ-CUc" firstAttribute="leading" secondItem="8aG-cY-E3P" secondAttribute="leading" id="9mX-XV-02t"/>
+                            <constraint firstAttribute="trailing" secondItem="sKc-QJ-DDh" secondAttribute="trailing" id="9q6-l7-YEG"/>
+                            <constraint firstItem="vPs-Qp-L9h" firstAttribute="top" secondItem="a6g-zf-0NU" secondAttribute="bottom" constant="10" id="Tgj-Z9-jk0"/>
+                            <constraint firstItem="sKc-QJ-DDh" firstAttribute="top" secondItem="zJa-XJ-CUc" secondAttribute="bottom" constant="49" id="XNC-h0-hSV"/>
+                            <constraint firstItem="po2-P0-um1" firstAttribute="centerY" secondItem="zJa-XJ-CUc" secondAttribute="centerY" id="Zfb-V3-LG2"/>
+                            <constraint firstItem="zJa-XJ-CUc" firstAttribute="top" secondItem="8aG-cY-E3P" secondAttribute="top" constant="21" id="bK6-0J-L5s"/>
+                            <constraint firstItem="po2-P0-um1" firstAttribute="centerX" secondItem="zJa-XJ-CUc" secondAttribute="centerX" id="baC-ru-kms"/>
+                            <constraint firstAttribute="trailing" secondItem="zJa-XJ-CUc" secondAttribute="trailing" id="duo-BU-5nh"/>
+                            <constraint firstItem="sKc-QJ-DDh" firstAttribute="leading" secondItem="8aG-cY-E3P" secondAttribute="leading" id="ik1-dB-Yoi"/>
+                            <constraint firstItem="a6g-zf-0NU" firstAttribute="leading" secondItem="8aG-cY-E3P" secondAttribute="leading" constant="15" id="j42-PW-6p2"/>
+                            <constraint firstItem="ewY-QN-iI6" firstAttribute="leading" secondItem="8aG-cY-E3P" secondAttribute="leading" constant="15" id="wTY-79-7ON"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="SettingsTab" id="84y-p5-TDZ"/>
                     <navigationItem key="navigationItem" id="CSl-vY-R5e"/>
@@ -527,16 +572,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GmM-FO-hyA">
-                                <rect key="frame" x="0.0" y="65" width="768" height="910"/>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GmM-FO-hyA">
+                                <rect key="frame" x="0.0" y="64" width="768" height="911"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="OsG-WP-huh" id="kzx-Qm-amu"/>
                                 </connections>
                             </webView>
-                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zaz-Pe-hXL">
-                                <rect key="frame" x="0.0" y="21" width="768" height="44"/>
+                            <toolbar clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zaz-Pe-hXL">
+                                <rect key="frame" x="0.0" y="20" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem image="appleBack" id="WUn-gM-pj0">
@@ -573,8 +618,8 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <color key="barTintColor" white="0.15328467153284672" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBZ-aI-1Yv">
-                                <rect key="frame" x="160" y="32" width="448" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aBZ-aI-1Yv">
+                                <rect key="frame" x="350" y="34" width="68" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -582,6 +627,17 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zaz-Pe-hXL" secondAttribute="trailing" id="4Me-WL-3X2"/>
+                            <constraint firstItem="zaz-Pe-hXL" firstAttribute="centerY" secondItem="aBZ-aI-1Yv" secondAttribute="centerY" constant="-0.5" id="87a-Xi-cOS"/>
+                            <constraint firstItem="zaz-Pe-hXL" firstAttribute="leading" secondItem="Jqe-be-Djn" secondAttribute="leading" id="Fno-ZH-mMf"/>
+                            <constraint firstItem="GmM-FO-hyA" firstAttribute="top" secondItem="zaz-Pe-hXL" secondAttribute="bottom" id="WSG-I1-DPA"/>
+                            <constraint firstItem="zaz-Pe-hXL" firstAttribute="centerX" secondItem="aBZ-aI-1Yv" secondAttribute="centerX" id="a2m-rJ-rMe"/>
+                            <constraint firstItem="rKO-1l-PGI" firstAttribute="top" secondItem="GmM-FO-hyA" secondAttribute="bottom" id="bQg-Xt-rH0"/>
+                            <constraint firstAttribute="trailing" secondItem="GmM-FO-hyA" secondAttribute="trailing" id="jWP-Bl-q0v"/>
+                            <constraint firstItem="GmM-FO-hyA" firstAttribute="leading" secondItem="Jqe-be-Djn" secondAttribute="leading" id="mp8-EY-K5j"/>
+                            <constraint firstItem="zaz-Pe-hXL" firstAttribute="top" secondItem="zlv-88-aLJ" secondAttribute="bottom" id="snt-IS-uKS"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Oasis" image="OasisTab" id="yBC-VM-N0N"/>
                     <connections>
