@@ -5,14 +5,35 @@
 /* Class = "IBUITabBarItem"; title = "Settings"; ObjectID = "84y-p5-TDZ"; */
 "84y-p5-TDZ.title" = "Settings";
 
+/* Class = "IBUILabel"; text = "Log In Credentials"; ObjectID = "AUj-Cx-S3R"; */
+"AUj-Cx-S3R.text" = "Log In Credentials";
+
 /* Class = "IBUILabel"; text = "Loading"; ObjectID = "Dcy-sW-e5M"; */
 "Dcy-sW-e5M.text" = "Loading";
+
+/* Class = "IBUILabel"; text = "Oasis"; ObjectID = "LuV-Dm-Hhs"; */
+"LuV-Dm-Hhs.text" = "Oasis";
 
 /* Class = "IBUIBarButtonItem"; title = "Canvas"; ObjectID = "N7F-eS-DWI"; */
 "N7F-eS-DWI.title" = "Canvas";
 
+/* Class = "IBUILabel"; text = "Password"; ObjectID = "O2Z-1w-Gho"; */
+"O2Z-1w-Gho.text" = "Password";
+
 /* Class = "IBUILabel"; text = "Class of:"; ObjectID = "Vea-HP-77p"; */
 "Vea-HP-77p.text" = "Class of:";
+
+/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "WL6-07-WTg"; */
+"WL6-07-WTg.normalTitle" = "Save";
+
+/* Class = "IBUILabel"; text = "Password"; ObjectID = "XNr-w6-1z3"; */
+"XNr-w6-1z3.text" = "Password";
+
+/* Class = "IBUIButton"; normalTitle = "Save"; ObjectID = "YCF-Vh-sJM"; */
+"YCF-Vh-sJM.normalTitle" = "Save";
+
+/* Class = "IBUILabel"; text = "Warren Alpert Medical School of Brown University"; ObjectID = "a6g-zf-0NU"; */
+"a6g-zf-0NU.text" = "Warren Alpert Medical School of Brown University";
 
 /* Class = "IBUILabel"; text = "Loading"; ObjectID = "aBZ-aI-1Yv"; */
 "aBZ-aI-1Yv.text" = "Loading";
@@ -20,8 +41,17 @@
 /* Class = "IBUINavigationItem"; title = "Notes"; ObjectID = "aqb-NJ-LOp"; */
 "aqb-NJ-LOp.title" = "Notes";
 
+/* Class = "IBUILabel"; text = "Username"; ObjectID = "baD-Ox-0fW"; */
+"baD-Ox-0fW.text" = "Username";
+
 /* Class = "IBUITabBarItem"; title = "Echo"; ObjectID = "cPa-gy-q4n"; */
 "cPa-gy-q4n.title" = "Echo";
+
+/* Class = "IBUILabel"; text = "The Office of Medical Education"; ObjectID = "ewY-QN-iI6"; */
+"ewY-QN-iI6.text" = "The Office of Medical Education";
+
+/* Class = "IBUILabel"; text = "Canvas"; ObjectID = "nHj-3D-TD9"; */
+"nHj-3D-TD9.text" = "Canvas";
 
 /* Class = "IBUILabel"; text = "AMS Express Settings"; ObjectID = "po2-P0-um1"; */
 "po2-P0-um1.text" = "AMS Express Settings";
@@ -32,11 +62,14 @@
 /* Class = "IBUITabBarItem"; title = "Calendar"; ObjectID = "se7-Cv-MVX"; */
 "se7-Cv-MVX.title" = "Calendar";
 
+/* Class = "IBUILabel"; text = "Username"; ObjectID = "vRy-rO-4B1"; */
+"vRy-rO-4B1.text" = "Username";
+
 /* Class = "IBUIButton"; normalTitle = "Delete!"; ObjectID = "xGQ-bf-ySN"; */
 "xGQ-bf-ySN.normalTitle" = "Delete!";
 
-/* Class = "IBUILabel"; text = "Delete All Data"; ObjectID = "xLz-sd-PFf"; */
-"xLz-sd-PFf.text" = "Delete All Data";
+/* Class = "IBUILabel"; text = "Delete All Notes"; ObjectID = "xLz-sd-PFf"; */
+"xLz-sd-PFf.text" = "Delete All Notes";
 
 /* Class = "IBUITabBarItem"; title = "Oasis"; ObjectID = "yBC-VM-N0N"; */
 "yBC-VM-N0N.title" = "Oasis";

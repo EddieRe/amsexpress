@@ -111,12 +111,12 @@
 }
 
 - (IBAction)deleteDataAction:(id)sender {
-    UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all files!"
-        message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
-            delegate:self
-            cancelButtonTitle:@"Cancel"
-            otherButtonTitles:@"OK", nil];
-    [downloadAlert show];
+UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all notes!"
+    message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your notes?"]
+        delegate:self
+        cancelButtonTitle:@"Cancel"
+        otherButtonTitles:@"OK", nil];
+[downloadAlert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
