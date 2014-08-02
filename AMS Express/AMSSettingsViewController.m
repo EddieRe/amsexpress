@@ -36,11 +36,13 @@
     self.settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
     self.yearLabel = [[UILabel alloc] init];
-    self.yearLabel.font = [UIFont fontWithName: @"Heiti TC Light" size:12.0];
+    self.yearLabel.text = @"2015";
+    self.yearLabel.font = [UIFont fontWithName: @"Heiti TC Light" size:15.0];
     self.yearLabel.frame = CGRectMake(398, 640, 300, 40);
     [self.view addSubview:self.yearLabel];
     
     //Create the segmented control
+    
     NSArray *itemArray = [NSArray arrayWithObjects: @"2015", @"2016", @"2017", @"2018", nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
     segmentedControl.frame = CGRectMake(254, 685, 250, 50);
@@ -82,7 +84,19 @@
     }completion:^(BOOL finished){
 }];
 }
-
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    if (textField == self.canvasUsernameField) {
+        [self.canvasPasswordField becomeFirstResponder];
+    } else if (textField == self.oasisUsernameField) {
+        [self.oasisPasswordField becomeFirstResponder];
+    } else if (textField == self.canvasPasswordField){
+        [self canvasSaveAction:self];
+        [self.canvasPasswordField resignFirstResponder];
+    } else {
+        [self oasisSaveAction:self];
+        [self.oasisPasswordField resignFirstResponder];
+    }return YES;
+}
 - (IBAction)canvasSaveAction:(id)sender {
     NSString *canvasUsernameString = self.canvasUsernameField.text;
     [self.settings setObject:canvasUsernameString forKey:@"canvasUsername"];
@@ -102,11 +116,11 @@
 }
 
 - (IBAction)deleteDataAction:(id)sender {
-UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all data!"
-        message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
-                    delegate:self
-                    cancelButtonTitle:@"Cancel"
-                    otherButtonTitles:@"OK", nil];
+UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all files!"
+    message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
+        delegate:self
+        cancelButtonTitle:@"Cancel"
+        otherButtonTitles:@"OK", nil];
 [downloadAlert show];
 }
 
@@ -115,6 +129,12 @@ UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all dat
     if (buttonIndex == 1)
     {
         //Colin makes this delete data.
+        UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:nil
+            message:[[NSString alloc] initWithFormat:@"Your files have been deleted."]
+                delegate:nil
+                cancelButtonTitle:@"OK"
+                otherButtonTitles:nil];
+        [deleteAlert show];
     }
 }
 - (void)didReceiveMemoryWarning

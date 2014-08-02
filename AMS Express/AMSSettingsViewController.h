@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AMSSettingsViewController : UIViewController <UIAlertViewDelegate>
+@interface AMSSettingsViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *oasisUsernameField;
 @property (weak, nonatomic) IBOutlet UITextField *oasisPasswordField;
