@@ -55,6 +55,7 @@
 - (void)loadRequestFromString:(NSString*)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
+    NSLog(@"load request firing");
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
