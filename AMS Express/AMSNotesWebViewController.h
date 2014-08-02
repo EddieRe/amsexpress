@@ -13,6 +13,8 @@
 @interface AMSNotesWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) AMSNotesHTMLParser *htmlParser;
+@property (nonatomic, strong) UIDocumentInteractionController *interactionController;
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property UINavigationController *masterNav;
 @property UIBarButtonItem *organizeBarButtonItem;
