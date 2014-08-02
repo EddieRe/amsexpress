@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AMSNotesHTMLParser.h"
 
 @class AMSNotesMasterViewController;
 
-@interface AMSNotesDataSourceController : NSObject <UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface AMSNotesDataSourceController : NSObject <NSFetchedResultsControllerDelegate, UITableViewDataSource, AMSNotesHTMLParserDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;

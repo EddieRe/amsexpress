@@ -162,6 +162,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="canvasButton" destination="N7F-eS-DWI" id="NEY-yD-3FE"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0h-Og-i0O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AMSNotesWebViewController : UIViewController
+@class AMSNotesHTMLParser;
 
+@interface AMSNotesWebViewController : UIViewController <UIWebViewDelegate>
+
+@property (nonatomic, strong) AMSNotesHTMLParser *htmlParser;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+
+- (void)loadRequestFromString:(NSString *)urlString;
 
 @end

@@ -38,6 +38,13 @@
     
 }
 
+#pragma mark - HTML Parser delegate methods
+
+- (void)htmlParserDidFinishParsing:(AMSNotesHTMLParser *)htmlParser
+{
+    
+}
+
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController {
     if (_fetchedResultsController != nil) {

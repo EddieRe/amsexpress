@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class AMSNotesDataSourceController, AMSNotesSplitVCDelegate;
+@class AMSNotesDataSourceController, AMSNotesSplitVCDelegate, AMSNotesWebViewController;
 
 @interface AMSNotesMasterViewController : UITableViewController
 
@@ -16,6 +16,8 @@
 
 @property (nonatomic, strong) AMSNotesSplitVCDelegate *splitVCDelegate;
 @property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
+@property (nonatomic, weak) AMSNotesWebViewController *webVC;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *canvasButton;
 
 - (IBAction)canvasAction:(id)sender;
 

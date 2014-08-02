@@ -10,6 +10,8 @@
 
 #import "AMSNotesSplitVCDelegate.h"
 #import "AMSNotesDataSourceController.h"
+#import "AMSNotesWebViewController.h"
+#import "AMSNotesHTMLParser.h"
 
 @interface AMSNotesMasterViewController ()
 
@@ -43,11 +45,14 @@
     
     self.splitViewController.delegate = self.splitVCDelegate;
     self.tableView.dataSource = self.dataSourceController;
+    self.webVC.htmlParser.delegate = self.dataSourceController;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,5 +62,7 @@
 }
 
 - (IBAction)canvasAction:(id)sender {
+    [self.webVC loadRequestFromString:@"http://www2.hawaii.edu/~kinzie/documents/CV%20&%20pubs/list%20of%20pdfs.htm"];
 }
+
 @end
