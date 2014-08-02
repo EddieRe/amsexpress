@@ -11,6 +11,7 @@
 #import "AMSNotesSplitVCDelegate.h"
 #import "AMSNotesDataSourceController.h"
 #import "AMSNotesWebViewController.h"
+#import "SavedPDF.h"
 
 @interface AMSNotesMasterViewController ()
 
@@ -48,6 +49,8 @@
     self.dataSourceController.managedObjectContext = self.managedObjectContext;
     self.dataSourceController.tableView = self.tableView;
     
+    self.selectedLinks = [[NSMutableArray alloc] init];
+    
     UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
     self.dataSourceController.detailNavigationVC = detailNavigationVC;
     
@@ -63,7 +66,37 @@
 }
 
 - (IBAction)canvasAction:(id)sender {
-    [self.webVC loadRequestFromString:@"http://www2.hawaii.edu/~kinzie/documents/CV%20&%20pubs/list%20of%20pdfs.htm"];
+    [self.webVC loadRequestFromString:@"http://canvas.brown.edu"];
+}
+
+#pragma mark - Table View delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (tableView.numberOfSections == 2 && indexPath.section == 0) {
+        if ([self addOrRemoveAnchorPartsFromSelectedLinks:self.dataSourceController.links[indexPath.row]]) {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryNone;
+        } else {
+            [tableView cellForRowAtIndexPath:indexPath].accessoryType = UITableViewCellAccessoryCheckmark;
+        };
+    } else {
+        // load the stored PDF
+    }
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+#pragma mark - Private methods
+
+- (BOOL)addOrRemoveAnchorPartsFromSelectedLinks:(NSArray *)anchorParts
+{
+    if ([self.selectedLinks containsObject:anchorParts]) {
+        [self.selectedLinks removeObject:anchorParts];
+        return YES;
+    } else {
+        [self.selectedLinks addObject:anchorParts];
+        return NO;
+    }
 }
 
 @end

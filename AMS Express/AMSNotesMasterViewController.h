@@ -17,11 +17,9 @@
 @property (nonatomic, strong) AMSNotesSplitVCDelegate *splitVCDelegate;
 @property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
 @property (nonatomic, weak) AMSNotesWebViewController *webVC;
+@property (nonatomic, strong) NSMutableArray *selectedLinks;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *canvasButton;
 
 - (IBAction)canvasAction:(id)sender;
-
-@property (nonatomic, strong) NSString *theString;
-
 
 @end

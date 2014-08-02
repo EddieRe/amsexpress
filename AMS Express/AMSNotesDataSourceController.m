@@ -9,6 +9,7 @@
 #import "AMSNotesDataSourceController.h"
 
 #import "AMSNotesWebViewController.h"
+#import "SavedPDF.h"
 
 @implementation AMSNotesDataSourceController
 
@@ -26,44 +27,14 @@
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
     
-    if (self.hasParsedLinks) {
-        switch (section) {
-            case 0:
-                return self.links.count;
-                break;
-            
-            case 1:
-                return [sectionInfo numberOfObjects];
-                break;
-                
-            default:
-                return 0;
-                break;
-        }
-    } else {
-        return [sectionInfo numberOfObjects];
-    }
+    if (self.hasParsedLinks && section == 0) return self.links.count;
+    else return [sectionInfo numberOfObjects];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if (self.hasParsedLinks) {
-        switch (section) {
-            case 0:
-                return @"PDFs on page";
-                break;
-            
-            case 1:
-                return @"Saved PDFs";
-                break;
-                
-            default:
-                return @"";
-                break;
-        }
-    } else {
-        return @"Saved PDFs";
-    }
+    if (self.hasParsedLinks && section == 0) return @"PDFs on page";
+    else return @"Saved PDFs";
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -78,21 +49,12 @@
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.hasParsedLinks) {
+    if (self.hasParsedLinks && [indexPath section] == 0) {
         NSArray *anchorParts = self.links[indexPath.row];
-
-        switch ([indexPath section]) {
-            case 0:
-                NSLog(@"anchor part 0: %@", anchorParts[0]);
-                cell.textLabel.text = anchorParts[0];
-                break;
-            
-            case 1:
-                break;
-                
-            default:
-                break;
-        }
+        cell.textLabel.text = anchorParts[0];
+    } else {
+        SavedPDF *savedPDF = [self fetchedResultObjectAtIndexPath:indexPath];
+        cell.textLabel.text = savedPDF.name;
     }
 }
 
@@ -113,6 +75,16 @@
     
     if ([self.links isEqualToArray:@[]]) return NO;
     else return YES;
+}
+
+- (SavedPDF *)fetchedResultObjectAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSUInteger indexPathArray[2];
+    indexPathArray[0] = 0;
+    indexPathArray[1] = indexPath.row;
+    NSIndexPath *correctedIndexPath = [NSIndexPath indexPathWithIndexes:indexPathArray length:2];
+    
+    return [self.fetchedResultsController objectAtIndexPath:correctedIndexPath];
 }
 
 

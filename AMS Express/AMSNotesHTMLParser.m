@@ -49,7 +49,7 @@
             NSTextCheckingResult *linkSearchResult = [linkRegex firstMatchInString:anchor options:0 range:NSMakeRange(0, anchor.length)];
             
             NSString *link = [anchor substringWithRange:linkSearchResult.range];
-            link = [link substringWithRange:NSMakeRange(6, (link.length - 7))];
+            link = [link substringWithRange:NSMakeRange(7, (link.length - 9))];
             
             [anchorPartsArray addObject:@[name, link]];
         }

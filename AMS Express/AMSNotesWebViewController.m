@@ -43,10 +43,7 @@
     
     NSLog(@"datasourcecontroller: %@\nhtmlparser: %@\ndelegate: %@", masterVC.dataSourceController, self.htmlParser, self.htmlParser.delegate);
     
-    
-    NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
-    NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
-    [self.webView loadRequest:urlRequest];
+    [self loadRequestFromString:@"http://canvas.brown.edu"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,7 +67,6 @@
     CFStringRef transform = CFSTR("Any-Hex/Java");
     CFStringTransform((__bridge CFMutableStringRef)html, NULL, transform, YES);
     
-    NSLog(@"%@", html);
     [self.htmlParser updateLinksArrayWithHTML:html];
 }
 
