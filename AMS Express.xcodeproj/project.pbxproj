@@ -85,7 +85,7 @@
 		3BD5970B198C310800A803EA /* AMSNotesHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesHTMLParser.m; sourceTree = "<group>"; };
 		3BD5970F198CE2F800A803EA /* AMSSettingsFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSSettingsFileManager.h; sourceTree = "<group>"; };
 		3BD59710198CE2F800A803EA /* AMSSettingsFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSSettingsFileManager.m; sourceTree = "<group>"; };
-		3BD59714198CE72300A803EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		3BD59716198D4DDE00A803EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		3BEBB816198ACDDE00EBF2EB /* AMSExpress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AMSExpress.xcdatamodel; sourceTree = "<group>"; };
 		3BEBB818198ACE1800EBF2EB /* SavedPDF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedPDF.h; sourceTree = "<group>"; };
 		3BEBB819198ACE1800EBF2EB /* SavedPDF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedPDF.m; sourceTree = "<group>"; };
@@ -427,7 +427,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				3BD59704198BFD8700A803EA /* Base */,
-				3BD59714198CE72300A803EA /* en */,
+				3BD59716198D4DDE00A803EA /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

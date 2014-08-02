@@ -47,8 +47,8 @@
 /* Class = "IBUITabBarItem"; title = "Echo"; ObjectID = "cPa-gy-q4n"; */
 "cPa-gy-q4n.title" = "Echo";
 
-/* Class = "IBUILabel"; text = "The Office of Medical Education"; ObjectID = "ewY-QN-iI6"; */
-"ewY-QN-iI6.text" = "The Office of Medical Education";
+/* Class = "IBUILabel"; text = "Office of Medical Education"; ObjectID = "ewY-QN-iI6"; */
+"ewY-QN-iI6.text" = "Office of Medical Education";
 
 /* Class = "IBUILabel"; text = "Canvas"; ObjectID = "nHj-3D-TD9"; */
 "nHj-3D-TD9.text" = "Canvas";
@@ -58,6 +58,18 @@
 
 /* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "pxF-XL-keI"; */
 "pxF-XL-keI.title" = "Item";
+
+/* Class = "IBUISegmentedControl"; qwq-kb-JQR.segmentTitles[0] = "2015"; ObjectID = "qwq-kb-JQR"; */
+"qwq-kb-JQR.segmentTitles[0]" = "2015";
+
+/* Class = "IBUISegmentedControl"; qwq-kb-JQR.segmentTitles[1] = "2016"; ObjectID = "qwq-kb-JQR"; */
+"qwq-kb-JQR.segmentTitles[1]" = "2016";
+
+/* Class = "IBUISegmentedControl"; qwq-kb-JQR.segmentTitles[2] = "2017"; ObjectID = "qwq-kb-JQR"; */
+"qwq-kb-JQR.segmentTitles[2]" = "2017";
+
+/* Class = "IBUISegmentedControl"; qwq-kb-JQR.segmentTitles[3] = "2018"; ObjectID = "qwq-kb-JQR"; */
+"qwq-kb-JQR.segmentTitles[3]" = "2018";
 
 /* Class = "IBUITabBarItem"; title = "Calendar"; ObjectID = "se7-Cv-MVX"; */
 "se7-Cv-MVX.title" = "Calendar";
