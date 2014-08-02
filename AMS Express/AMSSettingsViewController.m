@@ -31,25 +31,19 @@
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
     self.settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
-    self.yearLabel = [[UILabel alloc] init];
-    self.yearLabel.text = @"2015";
-    self.yearLabel.font = [UIFont fontWithName: @"Heiti TC Light" size:15.0];
-    self.yearLabel.frame = CGRectMake(398, 640, 300, 40);
-    [self.view addSubview:self.yearLabel];
-    
     //Create the segmented control
     
-    NSArray *itemArray = [NSArray arrayWithObjects: @"2015", @"2016", @"2017", @"2018", nil];
-    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
-    segmentedControl.frame = CGRectMake(254, 685, 250, 50);
-    segmentedControl.tintColor = [UIColor whiteColor];
-    segmentedControl.backgroundColor = [UIColor blackColor];
+//    NSArray *itemArray = [NSArray arrayWithObjects: @"2015", @"2016", @"2017", @"2018", nil];
+//    UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:itemArray];
+//   self.segmentedControl.frame = CGRectMake(259, 677, 250, 50);
+//    segmentedControl.tintColor = [UIColor whiteColor];
+//    segmentedControl.backgroundColor = [UIColor blackColor];
     NSNumber *indexNumber = [self.settings objectForKey:@"year"];
-    segmentedControl.selectedSegmentIndex = [indexNumber integerValue];
-    [segmentedControl addTarget:self
+    self.segmentedControl.selectedSegmentIndex = [indexNumber integerValue];
+    [self.segmentedControl addTarget:self
                          action:@selector(pickOne:)
                forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview:segmentedControl];
+    [self.view addSubview:self.segmentedControl];
 }
 
 - (void)pickOne:(id)sender{
