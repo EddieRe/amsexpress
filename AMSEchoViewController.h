@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *stopButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
-
+- (IBAction)echoHomeAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *pageTitle;
 
 @end

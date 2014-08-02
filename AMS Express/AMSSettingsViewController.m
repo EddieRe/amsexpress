@@ -10,6 +10,8 @@
 
 @interface AMSSettingsViewController ()
 
+
+
 @end
 
 @implementation AMSSettingsViewController
@@ -23,8 +25,6 @@
     return self;
 }
 
-UILabel *label;
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -34,10 +34,10 @@ UILabel *label;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
     self.settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     
-    label = [[UILabel alloc] init];
-    label.font = [UIFont fontWithName: @"Heiti TC Light" size:12.0];
-    label.frame = CGRectMake(400, 640, 300, 40);
-    [self.view addSubview:label];
+    self.yearLabel = [[UILabel alloc] init];
+    self.yearLabel.font = [UIFont fontWithName: @"Heiti TC Light" size:12.0];
+    self.yearLabel.frame = CGRectMake(400, 640, 300, 40);
+    [self.view addSubview:self.yearLabel];
     
     //Create the segmented control
     NSArray *itemArray = [NSArray arrayWithObjects: @"2015", @"2016", @"2017", @"2018", nil];
@@ -54,11 +54,34 @@ UILabel *label;
 }
 
 -(void) pickOne:(id)sender{
+   
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     NSUInteger index = [segmentedControl selectedSegmentIndex];
-    label.text = [segmentedControl titleForSegmentAtIndex:index];
+    self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
     
     [self.settings setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"year"];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    [self.settings writeToFile:path atomically:YES];
+}
+
+- (IBAction)oasisSaveAction:(id)sender {
+    NSString *oasisUsernameString = self.oasisUsernameField.text;
+    [self.settings setObject:oasisUsernameString forKey:@"oasisUsername"];
+    
+    NSString *oasisPasswordString = self.oasisPasswordField.text;
+    [self.settings setObject:oasisPasswordString forKey:@"oasisPassword"];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    [self.settings writeToFile:path atomically:YES];
+}
+
+- (IBAction)canvasSaveAction:(id)sender {
+    NSString *canvasUsernameString = self.canvasUsernameField.text;
+    [self.settings setObject:canvasUsernameString forKey:@"canvasUsername"];
+    
+    NSString *canvasPasswordString = self.canvasPasswordField.text;
+    [self.settings setObject:canvasPasswordString forKey:@"canvasPassword"];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
     [self.settings writeToFile:path atomically:YES];

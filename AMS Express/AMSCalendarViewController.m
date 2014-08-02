@@ -28,31 +28,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     // Do any additional setup after loading the view.
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
     [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
-    
 }
-
 - (void)loadRequestFromString:(NSString*)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)homeAction:(id)sender {
+    [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
 }
 - (void)updateButtons
@@ -79,7 +71,6 @@
 - (void)setCalendarURL
 {
     NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-    NSLog(@"%@", path);
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     NSNumber *indexNumber = [settings objectForKey:@"year"];
     NSUInteger index = [indexNumber integerValue];

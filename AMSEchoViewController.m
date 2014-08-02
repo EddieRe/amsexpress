@@ -10,6 +10,7 @@
 
 @interface AMSEchoViewController ()
 @property BOOL isLoading;
+@property NSString *echoURL;
 
 @end
 
@@ -28,13 +29,21 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
+    [self setEchoURL];
+    [self loadRequestFromString:self.echoURL];
 }
 
-- (void)loadRequestFromAddressField:(id)addressField
+//- (void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//
+//}
+
+- (void)loadRequestFromString:(NSString*)urlString
 {
-    NSString *urlString = [addressField text];
-    [self loadRequestFromString:urlString];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
+    [self.webView loadRequest:urlRequest];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,29 +51,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)homeAction:(id)sender {
-    [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
-}
 
-- (IBAction)stopRefresh:(id)sender {
-    
-  UIImage *buttonImage;
-    if (self.isLoading) {
-        [self.webView stopLoading];
-        buttonImage = [UIImage imageNamed:@"appleX"];
-    } else {
-        [self.webView reload];
-        buttonImage = [UIImage imageNamed:@"appleRefresh"];
-    }
-    
-    //  [self.stopRefresh setBackgroundImage:buttonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-}
-
-- (void)loadRequestFromString:(NSString*)urlString
-{
-    NSURL *url = [NSURL URLWithString:urlString];
-    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
-    [self.webView loadRequest:urlRequest];
+- (IBAction)echoHomeAction:(id)sender {
+    [self setEchoURL];
+    [self loadRequestFromString:self.echoURL];
 }
 
 - (void)updateButtons
@@ -88,6 +78,30 @@
     
 }
 
+- (void)setEchoURL
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSNumber *indexNumber = [settings objectForKey:@"year"];
+    NSUInteger index = [indexNumber integerValue];
+    switch (index) {
+        case 0:
+            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/faacc089-888f-47df-9f29-966dc6e65f9e";
+            break;
+        case 1:
+            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/faacc089-888f-47df-9f29-966dc6e65f9e";
+            break;
+        case 2:
+            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/58fba009-efd8-43d4-ab2c-65ba80b7198d";
+            break;
+        case 3:
+            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/faacc089-888f-47df-9f29-966dc6e65f9e";
+            break;
+        default:
+            break;
+    }
+}
+
 /*
  #pragma mark - Navigation
  
@@ -99,4 +113,6 @@
  }
  */
 
+- (IBAction)homeAction:(id)sender {
+}
 @end

@@ -10,6 +10,7 @@
 
 @interface AMSOasisViewController ()
 @property BOOL isLoading;
+@property BOOL isLoggedIn;
 
 @end
 
@@ -28,13 +29,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
+    [self loadRequestFromString:@"https://oasis.med.brown.edu/index.html"];
 }
 
-- (void)loadRequestFromAddressField:(id)addressField
+-(void)viewDidAppear:(BOOL)animated
 {
-    NSString *urlString = [addressField text];
-    [self loadRequestFromString:urlString];
+    [super viewDidAppear:animated];
+    if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"OASIS"])
+    {
+        [self insertCredentialsWithWebView:self.webView];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,22 +46,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (IBAction)homeAction:(id)sender {
-    [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
-}
 
-- (IBAction)stopRefresh:(id)sender {
-    
-    UIImage *buttonImage;
-    if (self.isLoading) {
-       [self.webView stopLoading];
-        buttonImage = [UIImage imageNamed:@"appleX"];
+- (IBAction)homeAction:(id)sender {
+        if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"OASIS"]){
+        [self insertCredentialsWithWebView:self.webView];
     } else {
-        [self.webView reload];
-        buttonImage = [UIImage imageNamed:@"appleRefresh"];
+        [self loadRequestFromString:@"https://oasis.med.brown.edu/student/schedule/index.html"];
     }
-    
-  //  [self.stopRefresh setBackgroundImage:buttonImage forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 - (void)loadRequestFromString:(NSString*)urlString
@@ -78,6 +73,7 @@
 {
     self.pageTitle.text = @"Loading";
     self.isLoading = YES;
+    self.currentURL = [webView.request.URL absoluteString];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -86,7 +82,45 @@
     self.pageTitle.text = pageTitle;
     self.isLoading = NO;
     
+   NSLog(@"url is %@", [webView.request.URL absoluteString]);
+    
+    if ([self.pageTitle.text isEqualToString:@"Oasis"]){
+        self.isLoggedIn = NO;
+    }
+    
+        if (!self.isLoggedIn) {
+        [self insertCredentialsWithWebView:webView];
+        self.isLoggedIn = YES;
+            
+    }
 }
+
+#pragma mark - Private methods
+
+- (void)insertCredentialsWithWebView:(UIWebView *)webView
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    NSString* userId   =  [settings objectForKey:@"oasisUsername"];
+    NSString* password =  [settings objectForKey:@"oasisPassword"];
+    
+    
+    if(userId != nil && password != nil ){
+        
+        NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementById('username').value='%@'", userId];
+        
+        NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", password];
+        
+        [webView stringByEvaluatingJavaScriptFromString:jScriptString1];
+        
+        [webView stringByEvaluatingJavaScriptFromString:jScriptString2];
+        
+        [webView stringByEvaluatingJavaScriptFromString:@"document.forms['login'].submit();"];
+        
+    }
+}
+
 
 /*
 #pragma mark - Navigation
