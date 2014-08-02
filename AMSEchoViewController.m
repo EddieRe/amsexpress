@@ -8,6 +8,8 @@
 
 #import "AMSEchoViewController.h"
 
+#import "AMSSettingsFileManager.h"
+
 @interface AMSEchoViewController ()
 @property BOOL isLoading;
 @property NSString *echoURL;
@@ -31,6 +33,15 @@
     // Do any additional setup after loading the view.
     [self setEchoURL];
     [self loadRequestFromString:self.echoURL];
+}
+- (void)viewDidAppear:(BOOL)animated{
+[super viewDidAppear:animated];
+    
+    NSString *path = [AMSSettingsFileManager settingsPath];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
+    NSNumber *indexNumber = [settings objectForKey:@"year"];
+    NSLog(@"%@",indexNumber);
 }
 
 //- (void)viewDidAppear:(BOOL)animated
@@ -80,8 +91,9 @@
 
 - (void)setEchoURL
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
-    NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    NSString *path = [AMSSettingsFileManager settingsPath];
+    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
+    
     NSNumber *indexNumber = [settings objectForKey:@"year"];
     NSUInteger index = [indexNumber integerValue];
     switch (index) {
