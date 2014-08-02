@@ -151,10 +151,10 @@
 			children = (
 				3B71903719881E2D005CDA0D /* AMSNotesMasterViewController.h */,
 				3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */,
-				3BB00EB71989F08800882656 /* AMSNotesWebViewController.h */,
-				3BB00EB81989F08800882656 /* AMSNotesWebViewController.m */,
 				3B2196A819896CEA00E768A2 /* AMSNotesDataSourceController.h */,
 				3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */,
+				3BB00EB71989F08800882656 /* AMSNotesWebViewController.h */,
+				3BB00EB81989F08800882656 /* AMSNotesWebViewController.m */,
 				3BD5970A198C310800A803EA /* AMSNotesHTMLParser.h */,
 				3BD5970B198C310800A803EA /* AMSNotesHTMLParser.m */,
 				3B2196AE1989715D00E768A2 /* AMSNotesSplitVCDelegate.h */,

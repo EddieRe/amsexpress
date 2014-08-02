@@ -10,24 +10,21 @@
 
 @implementation AMSNotesHTMLParser
 
-- (void)updateLinksArrayWithWebURL:(NSURL *)url
+- (void)updateLinksArrayWithHTML:(NSString *)html
 {
-    NSStringEncoding encoding = NSASCIIStringEncoding;
+    NSLog(@"%@", html);
+    
     NSError *error = nil;
-    
-    NSString *rawHTML = [NSString stringWithContentsOfURL:url encoding:encoding error:&error];
-    
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<a[^>]+href=\\\"(.*?)\\\"[^>]*>.*?</a>" options:0 error:&error];
+    NSArray *anchorRangeArray = [regex matchesInString:html options:0 range:NSMakeRange(0, html.length)];
     
-    NSArray *anchorRangeArray = [regex matchesInString:rawHTML options:0 range:NSMakeRange(0, rawHTML.length)];
     NSMutableArray *anchorArray = [[NSMutableArray alloc] init];
-    
     for (NSTextCheckingResult *match in anchorRangeArray) {
-        NSString *substringForMatch = [rawHTML substringWithRange:match.range];
+        NSString *substringForMatch = [html substringWithRange:match.range];
         [anchorArray addObject:substringForMatch];
     }
     
-    self.linksArray = [self anchorPartsWithAnchorArray:anchorArray];
+    [self.delegate htmlParser:self didFinishParsingWithLinks:[self anchorPartsWithAnchorArray:anchorArray]];
 }
 
 
@@ -45,7 +42,7 @@
         NSString *name = [anchor substringWithRange:nameSearchResult.range];
         name = [name substringWithRange:NSMakeRange(1, (name.length - 2))];
         
-        if (name.length >= 2 && [[name substringFromIndex:(name.length - 2)] isEqualToString:@"3)"]) {
+        if (name.length >= 4 && [[name substringFromIndex:(name.length - 4)] isEqualToString:@".pdf"]) {
             NSError *linkError = nil;
             NSRegularExpression *linkRegex = [NSRegularExpression regularExpressionWithPattern:@"href=\\\"(.*?)\\\"" options:0 error:&linkError];
             NSTextCheckingResult *linkSearchResult = [linkRegex firstMatchInString:anchor options:0 range:NSMakeRange(0, anchor.length)];

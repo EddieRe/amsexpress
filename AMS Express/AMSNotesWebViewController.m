@@ -9,6 +9,8 @@
 #import "AMSNotesWebViewController.h"
 
 #import "AMSNotesHTMLParser.h"
+#import "AMSNotesMasterViewController.h"
+#import "AMSNotesDataSourceController.h"
 
 @interface AMSNotesWebViewController ()
 
@@ -25,14 +27,24 @@
     return self;
 }
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.htmlParser = [[AMSNotesHTMLParser alloc] init];
-//    self.htmlParser.delegate = 
+    UINavigationController *masterNav = (UINavigationController *)[self.splitViewController.viewControllers firstObject];
+    AMSNotesMasterViewController *masterVC = (AMSNotesMasterViewController *)[masterNav topViewController];
+    self.htmlParser.delegate = masterVC.dataSourceController;
     
-    NSURL *url = [NSURL URLWithString:@"http://www2.hawaii.edu/~kinzie/documents/CV%20&%20pubs/list%20of%20pdfs.htm"];
+    NSLog(@"datasourcecontroller: %@\nhtmlparser: %@\ndelegate: %@", masterVC.dataSourceController, self.htmlParser, self.htmlParser.delegate);
+    
+    
+    NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
@@ -54,9 +66,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    NSURL *currentURL = [webView.request URL];
-    NSLog(@"%@", currentURL);
-    [self.htmlParser updateLinksArrayWithWebURL:currentURL];
+    [self.htmlParser updateLinksArrayWithHTML:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
 }
 
 @end

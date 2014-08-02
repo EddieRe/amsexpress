@@ -15,13 +15,55 @@
 #pragma mark - Table view data source
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (self.hasParsedLinks) {
+        return 2;
+    } else {
+        return 1;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 10;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:0];
+    
+    if (self.hasParsedLinks) {
+        switch (section) {
+            case 0:
+                return self.links.count;
+                break;
+            
+            case 1:
+                return [sectionInfo numberOfObjects];
+                break;
+                
+            default:
+                return 0;
+                break;
+        }
+    } else {
+        return [sectionInfo numberOfObjects];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    if (self.hasParsedLinks) {
+        switch (section) {
+            case 0:
+                return @"PDFs on page";
+                break;
+            
+            case 1:
+                return @"Saved PDFs";
+                break;
+                
+            default:
+                return @"";
+                break;
+        }
+    } else {
+        return @"Saved PDFs";
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -29,21 +71,50 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
+    [self configureCell:cell atIndexPath:indexPath];
     
     return cell;
 }
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (self.hasParsedLinks) {
+        NSArray *anchorParts = self.links[indexPath.row];
+
+        switch ([indexPath section]) {
+            case 0:
+                NSLog(@"anchor part 0: %@", anchorParts[0]);
+                cell.textLabel.text = anchorParts[0];
+                break;
+            
+            case 1:
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
-#pragma mark - HTML Parser delegate methods
-
-- (void)htmlParserDidFinishParsing:(AMSNotesHTMLParser *)htmlParser
+#pragma mark - HTML Parser delegate
+- (void)htmlParser:(AMSNotesHTMLParser *)htmlParser didFinishParsingWithLinks:(NSArray *)links
 {
-    
+    self.links = links;
+    NSLog(@"%@", self.links);
+    [self.tableView reloadData];
 }
+
+#pragma mark - Convenience methods
+- (BOOL)hasParsedLinks
+{
+    if (self.links == nil) {
+        self.links = @[];
+    }
+    
+    if ([self.links isEqualToArray:@[]]) return NO;
+    else return YES;
+}
+
 
 #pragma mark - Fetched results controller
 - (NSFetchedResultsController *)fetchedResultsController {

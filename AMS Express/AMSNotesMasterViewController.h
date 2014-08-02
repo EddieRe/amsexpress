@@ -21,4 +21,7 @@
 
 - (IBAction)canvasAction:(id)sender;
 
+@property (nonatomic, strong) NSString *theString;
+
+
 @end

@@ -11,7 +11,6 @@
 #import "AMSNotesSplitVCDelegate.h"
 #import "AMSNotesDataSourceController.h"
 #import "AMSNotesWebViewController.h"
-#import "AMSNotesHTMLParser.h"
 
 @interface AMSNotesMasterViewController ()
 
@@ -33,24 +32,26 @@
     [super awakeFromNib];
     
     self.splitVCDelegate = [[AMSNotesSplitVCDelegate alloc] init];
-    self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
     
     self.splitVCDelegate.masterVC = self;
-    self.dataSourceController.tableView = self.tableView;
-    self.dataSourceController.managedObjectContext = self.managedObjectContext;
-    
     UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
     self.splitVCDelegate.detailNavigationVC = detailNavigationVC;
-    self.dataSourceController.detailNavigationVC = detailNavigationVC;
-    
     self.splitViewController.delegate = self.splitVCDelegate;
-    self.tableView.dataSource = self.dataSourceController;
-    self.webVC.htmlParser.delegate = self.dataSourceController;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
+    
+    self.dataSourceController.managedObjectContext = self.managedObjectContext;
+    self.dataSourceController.tableView = self.tableView;
+    
+    UINavigationController *detailNavigationVC = [self.splitViewController.viewControllers lastObject];
+    self.dataSourceController.detailNavigationVC = detailNavigationVC;
+    
+    self.tableView.dataSource = self.dataSourceController;
     
     self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
 }

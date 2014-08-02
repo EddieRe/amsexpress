@@ -26,6 +26,7 @@
     UINavigationController *notesMasterNavigationController = (UINavigationController *)[notesSplitViewController.viewControllers firstObject];
     AMSNotesMasterViewController *notesMasterViewController =  (AMSNotesMasterViewController *)[notesMasterNavigationController topViewController];
     notesMasterViewController.managedObjectContext = self.managedObjectContext;
+
     
     [AMSSettingsFileManager instantiateSettingsPlist];
     

@@ -12,15 +12,15 @@
 
 @protocol AMSNotesHTMLParserDelegate <NSObject>
 
-- (void)htmlParserDidFinishParsing:(AMSNotesHTMLParser *)htmlParser;
+@required
+- (void)htmlParser:(AMSNotesHTMLParser *)htmlParser didFinishParsingWithLinks:(NSArray *)links;
 
 @end
 
 @interface AMSNotesHTMLParser : NSObject
 
-@property (nonatomic, strong) NSArray *linksArray;
 @property id <AMSNotesHTMLParserDelegate> delegate;
 
-- (void)updateLinksArrayWithWebURL:(NSURL *)url;
+- (void)updateLinksArrayWithHTML:(NSString *)html;
 
 @end

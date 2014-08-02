@@ -18,5 +18,8 @@
 
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, weak) UINavigationController *detailNavigationVC;
+@property (nonatomic, strong) NSArray *links;
+
+- (BOOL)hasParsedLinks;
 
 @end
