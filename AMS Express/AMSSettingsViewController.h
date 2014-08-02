@@ -22,6 +22,6 @@
 
 - (IBAction)deleteDataAction:(id)sender;
 
-@property (nonatomic,strong) NSMutableDictionary *settings;
+@property (nonatomic, strong) NSMutableDictionary *settings;
 @property (nonatomic, strong) UILabel *yearLabel;
 @end

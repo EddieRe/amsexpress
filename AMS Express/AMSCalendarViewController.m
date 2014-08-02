@@ -8,6 +8,8 @@
 
 #import "AMSCalendarViewController.h"
 
+#import "AMSSettingsFileManager.h"
+
 @interface AMSCalendarViewController ()
 @property BOOL isLoading;
 @property NSString *calendarURL;
@@ -70,7 +72,7 @@
 
 - (void)setCalendarURL
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSString *path = [AMSSettingsFileManager settingsPath];
     NSMutableDictionary *settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
     NSNumber *indexNumber = [settings objectForKey:@"year"];
     NSUInteger index = [indexNumber integerValue];

@@ -9,6 +9,8 @@
 #import "AMSAppDelegate.h"
 
 #import "AMSNotesMasterViewController.h"
+#import "AMSSettingsFileManager.h"
+
 
 @implementation AMSAppDelegate
 
@@ -24,6 +26,8 @@
     UINavigationController *notesMasterNavigationController = (UINavigationController *)[notesSplitViewController.viewControllers firstObject];
     AMSNotesMasterViewController *notesMasterViewController =  (AMSNotesMasterViewController *)[notesMasterNavigationController topViewController];
     notesMasterViewController.managedObjectContext = self.managedObjectContext;
+    
+    [AMSSettingsFileManager instantiateSettingsPlist];
     
     return YES;
 }
@@ -141,6 +145,7 @@
     
     return _persistentStoreCoordinator;
 }
+
 
 #pragma mark - Application's Documents directory
 

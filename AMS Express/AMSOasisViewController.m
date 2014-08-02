@@ -8,6 +8,8 @@
 
 #import "AMSOasisViewController.h"
 
+#import "AMSSettingsFileManager.h"
+
 @interface AMSOasisViewController ()
 @property BOOL isLoading;
 @property BOOL isLoggedIn;
@@ -35,6 +37,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
     if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"OASIS"])
     {
         [self insertCredentialsWithWebView:self.webView];
@@ -85,11 +88,9 @@
     if ([self.pageTitle.text isEqualToString:@"Oasis"]){
         self.isLoggedIn = NO;
     }
-    
         if (!self.isLoggedIn) {
         [self insertCredentialsWithWebView:webView];
         self.isLoggedIn = YES;
-            
     }
 }
 
@@ -97,23 +98,21 @@
 
 - (void)insertCredentialsWithWebView:(UIWebView *)webView
 {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSString *path = [AMSSettingsFileManager settingsPath];
     NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
     
-    NSString* userId   =  [settings objectForKey:@"oasisUsername"];
+    NSString* userId = [settings objectForKey:@"oasisUsername"];
     NSString* password =  [settings objectForKey:@"oasisPassword"];
-    
+    NSLog(@"%@, %@", userId, password);
+
     
     if(userId != nil && password != nil ){
         
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementById('username').value='%@'", userId];
-        
         NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementsByName('password')[0].value='%@'", password];
         
         [webView stringByEvaluatingJavaScriptFromString:jScriptString1];
-        
         [webView stringByEvaluatingJavaScriptFromString:jScriptString2];
-        
         [webView stringByEvaluatingJavaScriptFromString:@"document.forms['login'].submit();"];
         
     }

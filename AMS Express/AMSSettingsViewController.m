@@ -8,10 +8,7 @@
 
 #import "AMSSettingsViewController.h"
 
-@interface AMSSettingsViewController ()
-
-
-@end
+#import "AMSSettingsFileManager.h"
 
 @implementation AMSSettingsViewController
 
@@ -56,14 +53,14 @@
     [self.view addSubview:segmentedControl];
 }
 
--(void) pickOne:(id)sender{
+- (void)pickOne:(id)sender{
     UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
     NSUInteger index = [segmentedControl selectedSegmentIndex];
     self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
     
     [self.settings setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"year"];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
 }
 
@@ -74,17 +71,16 @@
     NSString *oasisPasswordString = self.oasisPasswordField.text;
     [self.settings setObject:oasisPasswordString forKey:@"oasisPassword"];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
     
     self.oasisCheckmark.alpha = 1;
     [UIView animateWithDuration:0.35 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^(void){
         self.oasisCheckmark.alpha = 0;
-        
-    }completion:^(BOOL finished){
-}];
+    }completion:nil];
 }
--(BOOL) textFieldShouldReturn:(UITextField *)textField{
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
     if (textField == self.canvasUsernameField) {
         [self.canvasPasswordField becomeFirstResponder];
     } else if (textField == self.oasisUsernameField) {
@@ -104,7 +100,7 @@
     NSString *canvasPasswordString = self.canvasPasswordField.text;
     [self.settings setObject:canvasPasswordString forKey:@"canvasPassword"];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"plist"];
+    NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
     
     self.canvasCheckmark.alpha = 1;
@@ -116,19 +112,19 @@
 }
 
 - (IBAction)deleteDataAction:(id)sender {
-UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all files!"
-    message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
-        delegate:self
-        cancelButtonTitle:@"Cancel"
-        otherButtonTitles:@"OK", nil];
-[downloadAlert show];
+    UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all files!"
+        message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
+            delegate:self
+            cancelButtonTitle:@"Cancel"
+            otherButtonTitles:@"OK", nil];
+    [downloadAlert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {
-        //Colin makes this delete data.
+        // Colin makes this delete data.
         UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:nil
             message:[[NSString alloc] initWithFormat:@"Your files have been deleted."]
                 delegate:nil
