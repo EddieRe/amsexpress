@@ -53,6 +53,8 @@
     
     UIBarButtonItem *stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
     
+    UIBarButtonItem *openInBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openInAction)];
+    
     UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshAction)];
     
     UIBarButtonItem *composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composeAction)];
@@ -63,7 +65,7 @@
    
     UIBarButtonItem *rewindBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(rewindAction)];
     
-    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, composeBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, composeBarButtonItem, openInBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
     
     NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
@@ -73,7 +75,7 @@
 {
     [super viewDidAppear:animated];
     
-    if ([self.pageTitle.text isEqualToString:@"Home"] || [self.pageTitle.text isEqualToString:@"Canvas"])
+    if ([self.pageTitle.text isEqualToString:@"Brown University Authentication for Web-Based Services"])
     {
         [self insertCredentialsWithWebView:self.webView];
     }
@@ -124,33 +126,34 @@
 -(void)rewindAction
 {
     [self.webView goBack];
-    NSLog(@"rewind button clicked");
 }
 
 -(void)forwardAction
 {
     [self.webView goForward];
-    NSLog(@"forward button clicked");
+}
+
+-(void)openInAction
+{
+    //Colin makes this Open-in.
 }
 
 -(void)composeAction
 {
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
-    NSLog(@"compose button clicked");
 }
 
 -(void)refreshAction
 {
     [self.webView reload];
-    NSLog(@"refresh button clicked");
 }
 
 -(void)stopAction
 {
     [self.webView stopLoading];
-    NSLog(@"stop button clicked");
 }
+
 - (void)insertCredentialsWithWebView:(UIWebView *)webView
 {
     NSString *path = [AMSSettingsFileManager settingsPath];
@@ -185,7 +188,7 @@
             self.canvasURL = @"https://canvas.brown.edu/courses/641699";
             break;
         case 2:
-            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            self.canvasURL = @"https://canvas.brown.edu/courses/801524";
             break;
         case 3:
             self.canvasURL = @"https://canvas.brown.edu/courses/641699";
