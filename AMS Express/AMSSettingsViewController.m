@@ -23,7 +23,6 @@
     }
     return self;
 }
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -116,8 +115,8 @@
 }
 
 - (IBAction)deleteDataAction:(id)sender {
-UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all files!"
-    message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your files?"]
+UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all notes!"
+    message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your notes?"]
         delegate:self
         cancelButtonTitle:@"Cancel"
         otherButtonTitles:@"OK", nil];
@@ -130,7 +129,7 @@ UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all fil
     {
         //Colin makes this delete data.
         UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:nil
-            message:[[NSString alloc] initWithFormat:@"Your files have been deleted."]
+            message:[[NSString alloc] initWithFormat:@"Your notes have been deleted."]
                 delegate:nil
                 cancelButtonTitle:@"OK"
                 otherButtonTitles:nil];
