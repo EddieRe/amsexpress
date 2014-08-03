@@ -61,6 +61,11 @@
     self.selectedLinks = [[NSMutableArray alloc] init];
     
     self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataSourceController.fetchedResultsController sections] objectAtIndex:0];
+    if ([sectionInfo numberOfObjects] == 0) {
+        // set alphas to one
+    }
 }
 - (void)didReceiveMemoryWarning
 {
