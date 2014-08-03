@@ -9,6 +9,7 @@
 #import "AMSSettingsViewController.h"
 
 #import "AMSSettingsFileManager.h"
+#import "SavedPDF.h"
 
 @implementation AMSSettingsViewController
 
@@ -81,6 +82,7 @@
         [self.oasisPasswordField resignFirstResponder];
     }return YES;
 }
+
 - (IBAction)canvasSaveAction:(id)sender {
     NSString *canvasUsernameString = self.canvasUsernameField.text;
     [self.settings setObject:canvasUsernameString forKey:@"canvasUsername"];
@@ -98,33 +100,50 @@
 }
 
 - (IBAction)deleteDataAction:(id)sender {
-UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all notes!"
-    message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your notes?"]
-        delegate:self
-        cancelButtonTitle:@"Cancel"
-        otherButtonTitles:@"OK", nil];
-[downloadAlert show];
+    UIAlertView *downloadAlert = [[UIAlertView alloc] initWithTitle:@"Delete all notes!"
+        message:[[NSString alloc] initWithFormat:@"Are you sure you want to delete all your notes?"]
+            delegate:self
+            cancelButtonTitle:@"Cancel"
+            otherButtonTitles:@"OK", nil];
+    [downloadAlert show];
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1)
     {
-        // Colin makes this delete data.
-        UIAlertView *deleteAlert = [[UIAlertView alloc] initWithTitle:nil
-            message:[[NSString alloc] initWithFormat:@"Your notes have been deleted."]
-                delegate:nil
-                cancelButtonTitle:@"OK"
-                otherButtonTitles:nil];
-        [deleteAlert show];
+        NSManagedObjectContext *context = self.managedObjectContext;
+        
+        NSFetchRequest *savedPDFsRequest = [[NSFetchRequest alloc] init];
+        [savedPDFsRequest setEntity:[NSEntityDescription entityForName:@"SavedPDF" inManagedObjectContext:context]];
+        [savedPDFsRequest setIncludesPropertyValues:NO];
+        
+        NSError *error = nil;
+        NSArray *savedPDFs = [context executeFetchRequest:savedPDFsRequest error:&error];
+        
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+            for (SavedPDF *savedPDF in savedPDFs) {
+                [context deleteObject:savedPDF];
+            }
+            NSError *saveError = nil;
+            [context save:&saveError];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self deletedAlert];
+            });
+        });
     }
 }
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+- (void)deletedAlert
+{
+    UIAlertView *deletedAlert = [[UIAlertView alloc] initWithTitle:nil
+                                                          message:[[NSString alloc] initWithFormat:@"Your notes have been deleted."]
+                                                         delegate:nil
+                                                cancelButtonTitle:@"OK"
+                                                otherButtonTitles:nil];
+    [deletedAlert show];
+}
 
 /*
 #pragma mark - Navigation

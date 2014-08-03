@@ -10,6 +10,8 @@
 
 @interface AMSSettingsViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>
 
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
+
 @property (weak, nonatomic) IBOutlet UITextField *oasisUsernameField;
 @property (weak, nonatomic) IBOutlet UITextField *oasisPasswordField;
 - (IBAction)oasisSaveAction:(id)sender;

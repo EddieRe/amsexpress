@@ -10,6 +10,7 @@
 
 #import "AMSNotesMasterViewController.h"
 #import "AMSSettingsFileManager.h"
+#import "AMSSettingsViewController.h"
 
 
 @implementation AMSAppDelegate
@@ -27,6 +28,10 @@
     UINavigationController *notesMasterNavigationController = (UINavigationController *)[notesSplitViewController.viewControllers firstObject];
     AMSNotesMasterViewController *notesMasterViewController =  (AMSNotesMasterViewController *)[notesMasterNavigationController topViewController];
     notesMasterViewController.managedObjectContext = self.managedObjectContext;
+    
+    AMSSettingsViewController *settingsViewController = (AMSSettingsViewController *)[tabBarController.viewControllers lastObject];
+    settingsViewController.managedObjectContext = self.managedObjectContext;
+    
 //    [[UINavigationBar appearance] setBarTintColor:[UIColor blackColor]];
     
     [AMSSettingsFileManager instantiateSettingsPlist];
