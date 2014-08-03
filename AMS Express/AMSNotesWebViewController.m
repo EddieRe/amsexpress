@@ -173,7 +173,6 @@
     }
     
     [self.navigationItem setRightBarButtonItems:rightBarButtonItems animated:YES];
-    NSLog(@"%@", self.navigationItem.rightBarButtonItems);
 }
 
 - (void)insertCredentialsWithWebView:(UIWebView *)webView
@@ -184,8 +183,7 @@
     NSString* userId = [settings objectForKey:@"canvasUsername"];
     NSString* password =  [settings objectForKey:@"canvasPassword"];
     
-    if(userId != nil && password != nil ){
-        
+    if (userId != nil && password != nil) {
         NSString*  jScriptString1 = [NSString  stringWithFormat:@"document.getElementById('username').value='%@'", userId];
         NSString*  jScriptString2 = [NSString stringWithFormat:@"document.getElementById('password').value='%@'", password];
         

@@ -123,8 +123,12 @@
         
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
             for (SavedPDF *savedPDF in savedPDFs) {
+                NSError *error = nil;
+                [[NSFileManager defaultManager] removeItemAtPath:savedPDF.localURL error:&error];
+                NSLog(@"%@", savedPDF.localURL);
                 [context deleteObject:savedPDF];
             }
+            
             NSError *saveError = nil;
             [context save:&saveError];
             
