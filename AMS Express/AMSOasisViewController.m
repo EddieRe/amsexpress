@@ -31,6 +31,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self loadRequestFromString:@"https://oasis.med.brown.edu/index.html"];
+    [self.webView setBackgroundColor:[UIColor darkGrayColor]];
+    self.webView.scalesPageToFit = YES;
 }
 
 -(void)viewDidAppear:(BOOL)animated

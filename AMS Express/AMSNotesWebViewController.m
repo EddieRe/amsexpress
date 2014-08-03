@@ -45,6 +45,8 @@
     
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
+    [self.webView setBackgroundColor:[UIColor darkGrayColor]];
+    self.webView.scalesPageToFit = YES;
     
     self.htmlParser = [[AMSNotesHTMLParser alloc] init];
     UINavigationController *masterNav = (UINavigationController *)[self.splitViewController.viewControllers firstObject];

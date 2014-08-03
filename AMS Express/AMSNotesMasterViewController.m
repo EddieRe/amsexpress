@@ -44,6 +44,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.tableView setSeparatorColor:[UIColor grayColor]];
+    [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
+//    [self.tableView setTintColor:[UIColor blueColor]];
+//    [self.tableView setZoomScale:(0.5)];
+   [self.tableView setContentScaleFactor:(0.25)];
+//    [self.tableView setFrame:(CGRectMake(0,0,100,500))];
     
     self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
     

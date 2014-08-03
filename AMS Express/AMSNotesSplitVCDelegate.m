@@ -16,6 +16,7 @@
     
     UINavigationItem *navItem = [self.detailNavigationVC.topViewController navigationItem];
     [navItem setLeftBarButtonItem:barButtonItem animated:YES];
+    
 }
 
 
