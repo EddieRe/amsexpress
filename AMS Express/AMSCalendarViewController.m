@@ -34,6 +34,8 @@
     // Do any additional setup after loading the view.
     [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
+    [self.webView setBackgroundColor:[UIColor darkGrayColor]];
+    self.webView.scalesPageToFit = YES;
 }
 - (void)viewDidAppear:(BOOL)animated
 {

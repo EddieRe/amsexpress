@@ -33,6 +33,8 @@
     // Do any additional setup after loading the view.
     [self setEchoURL];
     [self loadRequestFromString:self.echoURL];
+    [self.webView setBackgroundColor:[UIColor darkGrayColor]];
+    self.webView.scalesPageToFit = YES;
 }
 - (void)viewDidAppear:(BOOL)animated{
 [super viewDidAppear:animated];
