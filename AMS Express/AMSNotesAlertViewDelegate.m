@@ -41,7 +41,7 @@
             [savedPDFs addObject:savedPDF];
         }
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
             for (SavedPDF *savedPDF in savedPDFs) {
                 NSData *pdfData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:savedPDF.webURL]];
                 [pdfData writeToFile:savedPDF.localURL atomically:NO];

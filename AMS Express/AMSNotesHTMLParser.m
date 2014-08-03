@@ -12,8 +12,6 @@
 
 - (void)updateLinksArrayWithHTML:(NSString *)html
 {
-    NSLog(@"%@", html);
-    
     NSError *error = nil;
     NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"<a[^>]+href=\\\\\"(.*?)\\\\\"[^>]*>.*?</a>" options:NSRegularExpressionDotMatchesLineSeparators error:&error];
     NSArray *anchorRangeArray = [regex matchesInString:html options:0 range:NSMakeRange(0, html.length)];
@@ -41,7 +39,6 @@
         
         NSString *name = [anchor substringWithRange:nameSearchResult.range];
         name = [name substringWithRange:NSMakeRange(1, (name.length - 2))];
-        NSLog(@"%@", name);
         
         if (name.length >= 4 && [[name substringFromIndex:(name.length - 4)] isEqualToString:@".pdf"]) {
             NSError *linkError = nil;

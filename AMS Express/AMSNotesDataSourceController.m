@@ -47,6 +47,23 @@
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (self.hasParsedLinks && [indexPath section] == 0) return NO;
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        SavedPDF *savedPDF = [self fetchedResultObjectAtIndexPath:indexPath];
+        
+        NSError *error = nil;
+        [[NSFileManager defaultManager] removeItemAtPath:savedPDF.localURL error:&error];
+        [self.managedObjectContext deleteObject:savedPDF];        
+    }
+}
+
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     if (self.hasParsedLinks && [indexPath section] == 0) {
