@@ -29,6 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        [self spinPic];
      //custom initializing.
     }
     return self;
@@ -42,7 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self spinPic];
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
     [self.webView setBackgroundColor:[UIColor darkGrayColor]];
@@ -68,7 +69,12 @@
     NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     [self.webView loadRequest:urlRequest];
+    
+    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers firstObject];
+    self.delegate = (AMSNotesMasterViewController *)[nav topViewController];
+    [self.delegate webViewControllerDidFinishLoading:self];
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -147,6 +153,9 @@
 
 -(void)composeAction
 {
+    if (self.teachImage.alpha > 0.0f) {
+        self.teachImage.alpha = 0.0f;
+    }
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
 }
@@ -161,6 +170,24 @@
     [self.webView stopLoading];
 }
 
+- (void) spinPic
+{
+    if([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        UIImage *portraitImage = [UIImage imageNamed: @"AMSXTeachImage.png"];
+        [self.teachImage setImage:portraitImage];
+        NSLog(@"Portrait");
+    }
+    
+    if( [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight){
+        UIImage *landscapeImage = [UIImage imageNamed: @"AMSXTeachImageHorizontal.png"];
+        [self.teachImage setImage:landscapeImage];
+        NSLog(@"Landscape");
+    }
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation) fromInterfaceOrientation{
+    [self spinPic];
+}
 #pragma mark - Private methods
 
 - (void)toggleOpenInButtonOn:(BOOL)on;

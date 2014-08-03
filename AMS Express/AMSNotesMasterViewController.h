@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "AMSNotesDataSourceController.h"
+#import "AMSNotesWebViewController.h"
 
 @class AMSNotesSplitVCDelegate, AMSNotesWebViewController, AMSNotesAlertViewDelegate;
 
-@interface AMSNotesMasterViewController : UITableViewController <AMSNotesDataSourceControllerDelegate>
+@interface AMSNotesMasterViewController : UITableViewController <AMSNotesDataSourceControllerDelegate, AMSNotesWebViewControllerDelegate>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 

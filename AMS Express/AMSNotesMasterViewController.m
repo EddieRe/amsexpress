@@ -11,7 +11,6 @@
 #import "AMSNotesSplitVCDelegate.h"
 #import "AMSNotesDataSourceController.h"
 #import "AMSNotesAlertViewDelegate.h"
-#import "AMSNotesWebViewController.h"
 
 #import "SavedPDF.h"
 
@@ -46,10 +45,6 @@
     [super viewDidLoad];
     [self.tableView setSeparatorColor:[UIColor grayColor]];
     [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
-//    [self.tableView setTintColor:[UIColor blueColor]];
-//    [self.tableView setZoomScale:(0.5)];
-   [self.tableView setContentScaleFactor:(0.25)];
-//    [self.tableView setFrame:(CGRectMake(0,0,100,500))];
     
     self.dataSourceController = [[AMSNotesDataSourceController alloc] init];
     
@@ -67,12 +62,8 @@
     self.selectedLinks = [[NSMutableArray alloc] init];
     
     self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
-    
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataSourceController.fetchedResultsController sections] objectAtIndex:0];
-    if ([sectionInfo numberOfObjects] == 0) {
-        // set alphas to one
-    }
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -80,6 +71,9 @@
 }
 
 - (IBAction)getPDFAction:(id)sender {
+    if (self.webVC.teachImage.alpha > 0.0f) {
+        self.webVC.teachImage.alpha = 0.0f;
+    }
     if (self.dataSourceController.hasParsedLinks) {
         if ([self.selectedLinks isEqualToArray:@[]]) {
             [self noSelectionsAlert];
@@ -150,6 +144,21 @@
 {
     if ([self.selectedLinks containsObject:anchorParts]) return YES;
     else return NO;
+}
+
+#pragma mark - Web view controller delegate
+
+- (void)webViewControllerDidFinishLoading:(AMSNotesWebViewController *)webViewController
+{
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataSourceController.fetchedResultsController sections] objectAtIndex:0];
+    if ([sectionInfo numberOfObjects] == 0) {
+        // set alphas to one
+        NSLog(@"Hi");
+        [webViewController.teachImage setAlpha:(1.0f)];
+        
+    } else {
+        NSLog(@"Bye");
+    }
 }
 
 #pragma mark - Private methods
