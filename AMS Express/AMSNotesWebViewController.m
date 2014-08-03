@@ -15,9 +15,11 @@
 #import "AMSSettingsFileManager.h"
 
 @interface AMSNotesWebViewController ()
+
 @property BOOL isLoading;
 @property BOOL isLoggedIn;
 @property NSString *canvasURL;
+@property (nonatomic, strong) UIBarButtonItem *openInBarButtonItem;
 
 @end
 
@@ -49,23 +51,17 @@
     AMSNotesMasterViewController *masterVC = (AMSNotesMasterViewController *)[masterNav topViewController];
     self.htmlParser.delegate = masterVC.dataSourceController;
     
-    NSLog(@"datasourcecontroller: %@\nhtmlparser: %@\ndelegate: %@", masterVC.dataSourceController, self.htmlParser, self.htmlParser.delegate);
+    self.openInBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openInAction)];
+    self.interactionController = [[UIDocumentInteractionController alloc] init];
     
     UIBarButtonItem *stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
-    
-    UIBarButtonItem *openInBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openInAction)];
-    
     UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshAction)];
-    
     UIBarButtonItem *composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composeAction)];
-    
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
-    
     UIBarButtonItem *forwardBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(forwardAction)];
-   
     UIBarButtonItem *rewindBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(rewindAction)];
     
-    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, composeBarButtonItem, openInBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, composeBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
     
     NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
@@ -99,7 +95,6 @@
 {
     self.pageTitle.text = @"Loading";
     self.isLoading = YES;
-    self.currentURL = [webView.request.URL absoluteString];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -107,6 +102,16 @@
     NSString* pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.pageTitle.text = pageTitle;
     self.isLoading = NO;
+    
+    self.currentURL = [webView.request.URL absoluteString];
+    
+    self.interactionController.URL = [NSURL fileURLWithPath:self.currentURL];
+    if ([[self.currentURL substringFromIndex:(self.currentURL.length - 4)] isEqualToString:@".pdf"]) {
+        [self toggleOpenInButtonOn:YES];
+    } else {
+        NSLog(@"ispdf else fired");
+        [self toggleOpenInButtonOn:NO];
+    }
     
     if ([self.pageTitle.text isEqualToString:@"Canvas"]){
         self.isLoggedIn = NO;
@@ -135,7 +140,7 @@
 
 -(void)openInAction
 {
-    //Colin makes this Open-in.
+    [self.interactionController presentOpenInMenuFromBarButtonItem:self.openInBarButtonItem animated:YES];
 }
 
 -(void)composeAction
@@ -152,6 +157,23 @@
 -(void)stopAction
 {
     [self.webView stopLoading];
+}
+
+#pragma mark - Private methods
+
+- (void)toggleOpenInButtonOn:(BOOL)on;
+{
+    NSMutableArray *rightBarButtonItems = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+    
+    if ([rightBarButtonItems containsObject:self.openInBarButtonItem] && !on) {
+        [rightBarButtonItems removeObject:self.openInBarButtonItem];
+        NSLog(@"containsobject fired");
+    } else if (![rightBarButtonItems containsObject:self.openInBarButtonItem] && on) {
+        [rightBarButtonItems insertObject:self.openInBarButtonItem atIndex:3];
+    }
+    
+    [self.navigationItem setRightBarButtonItems:rightBarButtonItems animated:YES];
+    NSLog(@"%@", self.navigationItem.rightBarButtonItems);
 }
 
 - (void)insertCredentialsWithWebView:(UIWebView *)webView
@@ -173,6 +195,7 @@
         
     }
 }
+
 - (void)setCanvasURL
 {
     NSString *path = [AMSSettingsFileManager settingsPath];
