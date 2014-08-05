@@ -82,16 +82,16 @@
     NSUInteger index = [indexNumber integerValue];
     switch (index) {
         case 0:
-            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/faacc089-888f-47df-9f29-966dc6e65f9e";
+            self.echoURL = @"https://colinjackson.github.io/amsexpress/echo2015";
             break;
         case 1:
-            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/faacc089-888f-47df-9f29-966dc6e65f9e";
+            self.echoURL = @"https://colinjackson.github.io/amsexpress/echo2016";
             break;
         case 2:
-            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/58fba009-efd8-43d4-ab2c-65ba80b7198d";
+            self.echoURL = @"https://colinjackson.github.io/amsexpress/echo2017";
             break;
         case 3:
-            self.echoURL = @"https://mediacapture.brown.edu:8443/ess/portal/section/faacc089-888f-47df-9f29-966dc6e65f9e";
+            self.echoURL = @"https://colinjackson.github.io/amsexpress/echo2018";
             break;
         default:
             break;
