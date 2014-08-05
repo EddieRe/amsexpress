@@ -29,7 +29,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-     //custom initializing.
+        [self spinPic];
     }
     return self;
 }
@@ -42,7 +42,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self spinPic];
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
     [self.webView setBackgroundColor:[UIColor darkGrayColor]];
@@ -58,17 +58,22 @@
     
     UIBarButtonItem *stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopAction)];
     UIBarButtonItem *refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshAction)];
-    UIBarButtonItem *composeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(composeAction)];
+    UIBarButtonItem *homeBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose target:self action:@selector(homeAction)];
     UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
     UIBarButtonItem *forwardBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward target:self action:@selector(forwardAction)];
     UIBarButtonItem *rewindBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind target:self action:@selector(rewindAction)];
     
-    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, composeBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
+    self.navigationItem.rightBarButtonItems = [[NSArray alloc] initWithObjects:stopBarButtonItem, refreshBarButtonItem, homeBarButtonItem, flexibleSpace, forwardBarButtonItem, rewindBarButtonItem, nil];
     
     NSURL *url = [NSURL URLWithString:@"http://canvas.brown.edu"];
     NSURLRequest *urlRequest = [[NSURLRequest alloc] initWithURL:url];
     [self.webView loadRequest:urlRequest];
+    
+    UINavigationController *nav = (UINavigationController *)[self.splitViewController.viewControllers firstObject];
+    self.delegate = (AMSNotesMasterViewController *)[nav topViewController];
+    [self.delegate webViewControllerDidFinishLoading:self];
 }
+
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
@@ -81,13 +86,11 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)loadRequestFromString:(NSString*)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
-    NSLog(@"load request firing");
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
@@ -111,7 +114,6 @@
     if ([[self.currentURL substringFromIndex:(self.currentURL.length - 4)] isEqualToString:@".pdf"]) {
         [self toggleOpenInButtonOn:YES];
     } else {
-        NSLog(@"ispdf else fired");
         [self toggleOpenInButtonOn:NO];
     }
     
@@ -126,7 +128,7 @@
     NSMutableString *html = [NSMutableString stringWithString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
     CFStringRef transform = CFSTR("Any-Hex/Java");
     CFStringTransform((__bridge CFMutableStringRef)html, NULL, transform, YES);
-    
+
     [self.htmlParser updateLinksArrayWithHTML:html];
 }
 
@@ -145,8 +147,14 @@
     [self.interactionController presentOpenInMenuFromBarButtonItem:self.openInBarButtonItem animated:YES];
 }
 
--(void)composeAction
+-(void)homeAction
 {
+    if (self.teachImage.alpha > 0.0f) {
+        self.teachImage.alpha = 0.0f;
+    }
+    if (self.attentionImage.alpha > 0.0f) {
+        self.attentionImage.alpha = 0.0f;
+    }
     [self setCanvasURL];
     [self loadRequestFromString:self.canvasURL];
 }
@@ -161,6 +169,22 @@
     [self.webView stopLoading];
 }
 
+- (void) spinPic
+{
+    if([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        UIImage *portraitImage = [UIImage imageNamed: @"AMSXTeachImage.png"];
+        [self.teachImage setImage:portraitImage];
+    }
+    
+    if( [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeLeft || [UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationLandscapeRight){
+        UIImage *landscapeImage = [UIImage imageNamed: @"AMSXTeachImageHorizontal.png"];
+        [self.teachImage setImage:landscapeImage];
+    }
+}
+
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation) fromInterfaceOrientation{
+    [self spinPic];
+}
 #pragma mark - Private methods
 
 - (void)toggleOpenInButtonOn:(BOOL)on;
@@ -169,7 +193,6 @@
     
     if ([rightBarButtonItems containsObject:self.openInBarButtonItem] && !on) {
         [rightBarButtonItems removeObject:self.openInBarButtonItem];
-        NSLog(@"containsobject fired");
     } else if (![rightBarButtonItems containsObject:self.openInBarButtonItem] && on) {
         [rightBarButtonItems insertObject:self.openInBarButtonItem atIndex:3];
     }
@@ -205,7 +228,7 @@
     NSUInteger index = [indexNumber integerValue];
     switch (index) {
         case 0:
-            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            self.canvasURL = @"https://canvas.brown.edu/courses/69988";
             break;
         case 1:
             self.canvasURL = @"https://canvas.brown.edu/courses/641699";
@@ -214,7 +237,7 @@
             self.canvasURL = @"https://canvas.brown.edu/courses/801524";
             break;
         case 3:
-            self.canvasURL = @"https://canvas.brown.edu/courses/641699";
+            self.canvasURL = @"https://canvas.brown.edu/courses/900637";
             break;
         default:
             break;

@@ -22,7 +22,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -30,27 +29,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self setEchoURL];
     [self loadRequestFromString:self.echoURL];
     [self.webView setBackgroundColor:[UIColor darkGrayColor]];
     self.webView.scalesPageToFit = YES;
 }
-- (void)viewDidAppear:(BOOL)animated{
-[super viewDidAppear:animated];
-    
-    NSString *path = [AMSSettingsFileManager settingsPath];
-    NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
-    
-    NSNumber *indexNumber = [settings objectForKey:@"year"];
-    NSLog(@"%@",indexNumber);
-}
-
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//
-//}
 
 - (void)loadRequestFromString:(NSString*)urlString
 {
@@ -62,7 +45,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)echoHomeAction:(id)sender {

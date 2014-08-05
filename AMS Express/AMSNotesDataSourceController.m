@@ -41,7 +41,7 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    // Configure the cell
     [self configureCell:cell atIndexPath:indexPath];
     
     return cell;

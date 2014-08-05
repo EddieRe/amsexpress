@@ -23,7 +23,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -31,7 +30,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
     [self.webView setBackgroundColor:[UIColor darkGrayColor]];
@@ -40,25 +38,27 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    // Do any additional setup after loading the view.
     [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
 }
+
 - (void)loadRequestFromString:(NSString*)urlString
 {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:urlRequest];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)homeAction:(id)sender {
     [self setCalendarURL];
     [self loadRequestFromString:self.calendarURL];
 }
+
 - (void)updateButtons
 {
     self.forwardButton.enabled = self.webView.canGoForward;
@@ -77,14 +77,12 @@
     NSString* pageTitle = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     self.pageTitle.text = pageTitle;
     self.isLoading = NO;
-    
 }
 
 - (void)setCalendarURL
 {
     NSString *path = [AMSSettingsFileManager settingsPath];
     NSDictionary *settings = [[NSDictionary alloc] initWithContentsOfFile:path];
-    NSLog(@"%@", [settings objectForKey:@"year"]);
     
     NSNumber *indexNumber = [settings objectForKey:@"year"];
     NSUInteger index = [indexNumber integerValue];

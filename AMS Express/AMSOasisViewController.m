@@ -22,14 +22,13 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     [self loadRequestFromString:@"https://oasis.med.brown.edu/index.html"];
     [self.webView setBackgroundColor:[UIColor darkGrayColor]];
     self.webView.scalesPageToFit = YES;
@@ -48,7 +47,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)homeAction:(id)sender {
@@ -113,7 +111,6 @@
         [webView stringByEvaluatingJavaScriptFromString:jScriptString1];
         [webView stringByEvaluatingJavaScriptFromString:jScriptString2];
         [webView stringByEvaluatingJavaScriptFromString:@"document.forms['login'].submit();"];
-        
     }
 }
 
