@@ -42,8 +42,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell
+    cell.textLabel.font = [UIFont fontWithName:@"Heiti TC" size:12];
     [self configureCell:cell atIndexPath:indexPath];
-    
+   
     return cell;
 }
 
