@@ -61,7 +61,8 @@
         
         NSError *error = nil;
         [[NSFileManager defaultManager] removeItemAtPath:savedPDF.localURL error:&error];
-        [self.managedObjectContext deleteObject:savedPDF];        
+        [self.managedObjectContext deleteObject:savedPDF];
+        [self saveContext];
     }
 }
 
@@ -200,11 +201,19 @@
 
  // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
  
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
     [self.tableView reloadData];
- }
- 
+}
+
+#pragma mark - Private methods
+- (void)saveContext
+{
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Unexpected error: %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
 
 @end

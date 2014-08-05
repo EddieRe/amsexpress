@@ -47,13 +47,7 @@
                 [pdfData writeToFile:savedPDF.localURL atomically:NO];
             }
             
-            NSError *error = nil;
-            if (![context save:&error]) {
-                // Replace this implementation with code to handle the error appropriately.
-                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-                abort();
-            }
+            [self saveContext];
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.masterVC.tableView reloadData];
@@ -82,6 +76,17 @@
                                                     error:&error];
     if (error) {
         NSLog(@"%@, %@", error, [error userInfo]);
+    }
+}
+
+- (void)saveContext
+{
+NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
     }
 }
 
