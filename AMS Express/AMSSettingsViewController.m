@@ -29,6 +29,8 @@
     self.canvasCheckmark.alpha = 0;
     self.oasisCheckmark.alpha = 0;
     
+    int startYear = [[self.settings objectForKey:@"year"] intValue];
+    self.yearLabel.text = [self.segmentedControl titleForSegmentAtIndex:startYear];
     self.oasisUsernameField.text = [self.settings objectForKey:@"oasisUsername"];
     self.oasisPasswordField.text = [self.settings objectForKey:@"oasisPassword"];
     self.canvasUsernameField.text = [self.settings objectForKey:@"canvasUsername"];
@@ -42,9 +44,9 @@
 }
 
 - (void)pickOne:(id)sender{
-    UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-    NSUInteger index = [segmentedControl selectedSegmentIndex];
-    self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
+    self.segmentedControl = (UISegmentedControl *)sender;
+    NSUInteger index = [self.segmentedControl selectedSegmentIndex];
+    self.yearLabel.text = [self.segmentedControl titleForSegmentAtIndex:index];
     [self.settings setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"year"];
     NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
