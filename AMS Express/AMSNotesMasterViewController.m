@@ -62,17 +62,20 @@
     self.selectedLinks = [[NSMutableArray alloc] init];
     
     self.webVC = (AMSNotesWebViewController *)[(UINavigationController *)[self.splitViewController.viewControllers lastObject] topViewController];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (IBAction)getPDFAction:(id)sender {
     if (self.webVC.teachImage.alpha > 0.0f) {
         self.webVC.teachImage.alpha = 0.0f;
+    }
+    if (self.webVC.attentionImage.alpha > 0.0f) {
+        self.webVC.attentionImage.alpha = 0.0f;
     }
     if (self.dataSourceController.hasParsedLinks) {
         if ([self.selectedLinks isEqualToArray:@[]]) {
@@ -120,7 +123,6 @@
         };
     } else {
         SavedPDF *savedPDF = [self.dataSourceController fetchedResultObjectAtIndexPath:indexPath];
-        NSLog(@"else firing. localURL: %@", savedPDF.localURL);
         NSURL *fileURL = [NSURL fileURLWithPath:savedPDF.localURL];
         NSURLRequest *fileURLRequest = [[NSURLRequest alloc] initWithURL:fileURL];
         [self.webVC.webView loadRequest:fileURLRequest];
@@ -135,6 +137,12 @@
 {
     if (result) {
         self.getPDFButton.title = @"Download Selected";
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataSourceController.fetchedResultsController sections] objectAtIndex:0];
+        if ([sectionInfo numberOfObjects] == 0) {
+            [self.webVC.attentionImage setAlpha:(1.0f)];
+        } else {
+            [self.webVC.attentionImage setAlpha:(0.0f)];
+        }
     } else {
         self.getPDFButton.title = @"Go to Canvas";
     }
@@ -152,12 +160,9 @@
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataSourceController.fetchedResultsController sections] objectAtIndex:0];
     if ([sectionInfo numberOfObjects] == 0) {
-        // set alphas to one
-        NSLog(@"Hi");
         [webViewController.teachImage setAlpha:(1.0f)];
-        
     } else {
-        NSLog(@"Bye");
+        [webViewController.teachImage setAlpha:(0.0f)];
     }
 }
 

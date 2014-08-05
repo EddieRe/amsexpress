@@ -150,6 +150,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AttentionImage" translatesAutoresizingMaskIntoConstraints="NO" id="YZu-mz-xBS">
+                                <rect key="frame" x="5" y="69" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -165,6 +169,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="eep-gs-eni"/>
                     <connections>
+                        <outlet property="attentionImage" destination="YZu-mz-xBS" id="3ZM-IK-Tke"/>
                         <outlet property="pageTitle" destination="s3d-JJ-F4V" id="wmd-UB-3st"/>
                         <outlet property="teachImage" destination="vYT-Vk-HoY" id="FzT-KK-fb5"/>
                         <outlet property="webView" destination="8GW-7J-GA0" id="8VH-M3-i3d"/>
@@ -850,6 +855,7 @@
     </scenes>
     <resources>
         <image name="AMSXTeachImage" width="768" height="1024"/>
+        <image name="AttentionImage" width="200" height="200"/>
         <image name="CalendarTab" width="25" height="25"/>
         <image name="CheckMark" width="256" height="256"/>
         <image name="EchoTab" width="25" height="25"/>

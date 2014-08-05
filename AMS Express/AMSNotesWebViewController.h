@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AMSNotesDataSourceController.h"
 
 @class AMSNotesHTMLParser, AMSNotesWebViewController;
 
@@ -18,6 +19,7 @@
 
 @interface AMSNotesWebViewController : UIViewController <UIWebViewDelegate>
 
+@property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
 @property (nonatomic, strong) AMSNotesHTMLParser *htmlParser;
 @property (nonatomic, strong) UIDocumentInteractionController *interactionController;
 @property id <AMSNotesWebViewControllerDelegate> delegate;
@@ -26,7 +28,7 @@
 @property UINavigationController *masterNav;
 @property UIBarButtonItem *organizeBarButtonItem;
 @property UIBarButtonItem *rewindBarButtonItem;
-@property UIBarButtonItem *composeBarButtonItem;
+@property UIBarButtonItem *homeBarButtonItem;
 @property UIBarButtonItem *forwardBarButtonItem;
 @property UIBarButtonItem *stopBarButtonItem;
 @property UIBarButtonItem *refreshBarButtonItem;
@@ -34,6 +36,7 @@
 @property (weak,nonatomic) NSString *currentURL;
 
 @property (weak, nonatomic) IBOutlet UIImageView *teachImage;
+@property (weak, nonatomic) IBOutlet UIImageView *attentionImage;
 
 
 - (void)loadRequestFromString:(NSString *)urlString;

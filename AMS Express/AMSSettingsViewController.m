@@ -17,7 +17,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -26,7 +25,6 @@
     [super viewDidLoad];
     NSString *path = [AMSSettingsFileManager settingsPath];
     self.settings = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    // Do any additional setup after loading the view.
     
     self.canvasCheckmark.alpha = 0;
     self.oasisCheckmark.alpha = 0;
@@ -48,7 +46,6 @@
     NSUInteger index = [segmentedControl selectedSegmentIndex];
     self.yearLabel.text = [segmentedControl titleForSegmentAtIndex:index];
     [self.settings setObject:[NSNumber numberWithUnsignedInteger:index] forKey:@"year"];
-    NSLog(@"%lu", (unsigned long)index);
     NSString *path = [AMSSettingsFileManager settingsPath];
     [self.settings writeToFile:path atomically:YES];
 }
@@ -125,10 +122,8 @@
             for (SavedPDF *savedPDF in savedPDFs) {
                 NSError *error = nil;
                 [[NSFileManager defaultManager] removeItemAtPath:savedPDF.localURL error:&error];
-                NSLog(@"%@", savedPDF.localURL);
                 [context deleteObject:savedPDF];
             }
-            
             NSError *saveError = nil;
             [context save:&saveError];
             
@@ -142,10 +137,8 @@
 - (void)deletedAlert
 {
     UIAlertView *deletedAlert = [[UIAlertView alloc] initWithTitle:nil
-                                                          message:[[NSString alloc] initWithFormat:@"Your notes have been deleted."]
-                                                         delegate:nil
-                                                cancelButtonTitle:@"OK"
-                                                otherButtonTitles:nil];
+        message:[[NSString alloc] initWithFormat:@"Your notes have been deleted."]
+        delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     [deletedAlert show];
 }
 
