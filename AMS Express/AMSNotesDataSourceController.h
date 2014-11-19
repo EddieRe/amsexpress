@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AMSNotesHTMLParser.h"
 
 @class AMSNotesDataSourceController, SavedPDF;
 
@@ -20,7 +19,7 @@
 
 @class AMSNotesMasterViewController;
 
-@interface AMSNotesDataSourceController : NSObject <NSFetchedResultsControllerDelegate, UITableViewDataSource, AMSNotesHTMLParserDelegate>
+@interface AMSNotesDataSourceController : NSObject <NSFetchedResultsControllerDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -30,6 +29,7 @@
 @property (nonatomic, strong) NSArray *links;
 @property id <AMSNotesDataSourceControllerDelegate> delegate;
 
+- (void)addLinksToTable:(NSArray *)links;
 - (BOOL)hasParsedLinks;
 - (SavedPDF *)fetchedResultObjectAtIndexPath:(NSIndexPath *)indexPath;
 

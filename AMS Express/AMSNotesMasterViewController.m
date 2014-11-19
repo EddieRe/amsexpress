@@ -20,15 +20,6 @@
 
 @implementation AMSNotesMasterViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)awakeFromNib
 {
     [super awakeFromNib];
@@ -86,6 +77,10 @@
     } else {
         [self.webVC loadRequestFromString:@"http://canvas.brown.edu"];
     }
+}
+
+- (IBAction)scanForPDFsAction:(id)sender {
+    [self.webVC scanForPDFs];
 }
 
 #pragma mark - UIAlerts

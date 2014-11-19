@@ -10,29 +10,29 @@
 	<string>AMS Express</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>C06F9BF9-8447-4812-A6DB-F8765F675F40</key>
-		<string>https://github.com/colinjackson/amsexpress.git</string>
+		<key>4DE1384FC670025CCCB73164ABBB47E2C2FEAB50</key>
+		<string>github.com:EddieRe/amsexpress.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>AMS Express.xcodeproj/project.xcworkspace</string>
+	<string>AMS Express.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>C06F9BF9-8447-4812-A6DB-F8765F675F40</key>
+		<key>4DE1384FC670025CCCB73164ABBB47E2C2FEAB50</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/colinjackson/amsexpress.git</string>
+	<string>github.com:EddieRe/amsexpress.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>C06F9BF9-8447-4812-A6DB-F8765F675F40</string>
+	<string>4DE1384FC670025CCCB73164ABBB47E2C2FEAB50</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>C06F9BF9-8447-4812-A6DB-F8765F675F40</string>
+			<string>4DE1384FC670025CCCB73164ABBB47E2C2FEAB50</string>
 			<key>IDESourceControlWCCName</key>
 			<string>amsexpress</string>
 		</dict>

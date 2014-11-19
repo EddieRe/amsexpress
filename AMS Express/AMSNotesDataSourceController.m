@@ -81,11 +81,10 @@
     }
 }
 
-#pragma mark - HTML Parser delegate
-- (void)htmlParser:(AMSNotesHTMLParser *)htmlParser didFinishParsingWithLinks:(NSArray *)links
+#pragma mark - Link management
+- (void)addLinksToTable:(NSArray *)links
 {
     self.links = links;
-    NSLog(@"%@", self.links);
     [self.tableView reloadData];
     [self.delegate dataSourceController:self didResetLinksWithResult:self.hasParsedLinks];
 }
