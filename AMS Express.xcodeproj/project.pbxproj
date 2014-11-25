@@ -13,6 +13,7 @@
 		3B1DF0DB197778DD008C87BF /* AMSTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B1DF0DA197778DD008C87BF /* AMSTabBarController.m */; };
 		3B2196AA19896CEA00E768A2 /* AMSNotesDataSourceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */; };
 		3B2196B01989715D00E768A2 /* AMSNotesSplitVCDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2196AF1989715D00E768A2 /* AMSNotesSplitVCDelegate.m */; };
+		3B28FB171A1C2F4100681CD6 /* HTMLParser.js in Resources */ = {isa = PBXBuildFile; fileRef = 3B28FB161A1C2F4100681CD6 /* HTMLParser.js */; };
 		3B71903919881E2D005CDA0D /* AMSNotesMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */; };
 		3BB00EB91989F08800882656 /* AMSNotesWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BB00EB81989F08800882656 /* AMSNotesWebViewController.m */; };
 		3BB00EBE198AC51F00882656 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BB00EBD198AC51F00882656 /* CoreData.framework */; };
@@ -30,7 +31,6 @@
 		3BCAA16119747B49008A74F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3BCAA15F19747B49008A74F6 /* InfoPlist.strings */; };
 		3BCAA16319747B49008A74F6 /* AMS_ExpressTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCAA16219747B49008A74F6 /* AMS_ExpressTests.m */; };
 		3BD59705198BFD8700A803EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BD59703198BFD8700A803EA /* Main.storyboard */; };
-		3BD5970C198C310800A803EA /* AMSNotesHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD5970B198C310800A803EA /* AMSNotesHTMLParser.m */; };
 		3BD59711198CE2F800A803EA /* AMSSettingsFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD59710198CE2F800A803EA /* AMSSettingsFileManager.m */; };
 		3BD5971B198D6C9E00A803EA /* AMSNotesAlertViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD5971A198D6C9E00A803EA /* AMSNotesAlertViewDelegate.m */; };
 		3BEBB817198ACDDE00EBF2EB /* AMSExpress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3BEBB815198ACDDE00EBF2EB /* AMSExpress.xcdatamodeld */; };
@@ -61,6 +61,7 @@
 		3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesDataSourceController.m; sourceTree = "<group>"; };
 		3B2196AE1989715D00E768A2 /* AMSNotesSplitVCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesSplitVCDelegate.h; sourceTree = "<group>"; };
 		3B2196AF1989715D00E768A2 /* AMSNotesSplitVCDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesSplitVCDelegate.m; sourceTree = "<group>"; };
+		3B28FB161A1C2F4100681CD6 /* HTMLParser.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = HTMLParser.js; sourceTree = "<group>"; };
 		3B71903719881E2D005CDA0D /* AMSNotesMasterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesMasterViewController.h; sourceTree = "<group>"; };
 		3B71903819881E2D005CDA0D /* AMSNotesMasterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesMasterViewController.m; sourceTree = "<group>"; };
 		3BB00EB71989F08800882656 /* AMSNotesWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesWebViewController.h; sourceTree = "<group>"; };
@@ -84,8 +85,6 @@
 		3BCAA16019747B49008A74F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3BCAA16219747B49008A74F6 /* AMS_ExpressTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMS_ExpressTests.m; sourceTree = "<group>"; };
 		3BD59704198BFD8700A803EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3BD5970A198C310800A803EA /* AMSNotesHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSNotesHTMLParser.h; sourceTree = "<group>"; };
-		3BD5970B198C310800A803EA /* AMSNotesHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSNotesHTMLParser.m; sourceTree = "<group>"; };
 		3BD5970F198CE2F800A803EA /* AMSSettingsFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMSSettingsFileManager.h; sourceTree = "<group>"; };
 		3BD59710198CE2F800A803EA /* AMSSettingsFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMSSettingsFileManager.m; sourceTree = "<group>"; };
 		3BD59718198D69CE00A803EA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
@@ -160,8 +159,6 @@
 				3B2196A919896CEA00E768A2 /* AMSNotesDataSourceController.m */,
 				3BB00EB71989F08800882656 /* AMSNotesWebViewController.h */,
 				3BB00EB81989F08800882656 /* AMSNotesWebViewController.m */,
-				3BD5970A198C310800A803EA /* AMSNotesHTMLParser.h */,
-				3BD5970B198C310800A803EA /* AMSNotesHTMLParser.m */,
 				3BD59719198D6C9E00A803EA /* AMSNotesAlertViewDelegate.h */,
 				3BD5971A198D6C9E00A803EA /* AMSNotesAlertViewDelegate.m */,
 				3B2196AE1989715D00E768A2 /* AMSNotesSplitVCDelegate.h */,
@@ -240,6 +237,7 @@
 				3BCAA13D19747B49008A74F6 /* InfoPlist.strings */,
 				3BCAA14019747B49008A74F6 /* main.m */,
 				3BCAA14219747B49008A74F6 /* AMS Express-Prefix.pch */,
+				3B28FB161A1C2F4100681CD6 /* HTMLParser.js */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -360,6 +358,7 @@
 				3BBD57B51A2400010069E2CB /* .gitignore in Resources */,
 				3BCAA15019747B49008A74F6 /* Images.xcassets in Resources */,
 				3BCAA13F19747B49008A74F6 /* InfoPlist.strings in Resources */,
+				3B28FB171A1C2F4100681CD6 /* HTMLParser.js in Resources */,
 				3BD59705198BFD8700A803EA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,7 +393,6 @@
 				3BEBB81A198ACE1800EBF2EB /* SavedPDF.m in Sources */,
 				3BD59711198CE2F800A803EA /* AMSSettingsFileManager.m in Sources */,
 				3BD5971B198D6C9E00A803EA /* AMSNotesAlertViewDelegate.m in Sources */,
-				3BD5970C198C310800A803EA /* AMSNotesHTMLParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,6 @@
 
 #import "AMSNotesWebViewController.h"
 
-#import "AMSNotesHTMLParser.h"
 #import "AMSNotesMasterViewController.h"
 #import "AMSNotesDataSourceController.h"
 
@@ -48,10 +47,9 @@
     [self.webView setBackgroundColor:[UIColor darkGrayColor]];
     self.webView.scalesPageToFit = YES;
     
-    self.htmlParser = [[AMSNotesHTMLParser alloc] init];
     UINavigationController *masterNav = (UINavigationController *)[self.splitViewController.viewControllers firstObject];
     AMSNotesMasterViewController *masterVC = (AMSNotesMasterViewController *)[masterNav topViewController];
-    self.htmlParser.delegate = masterVC.dataSourceController;
+    self.dataSourceController = masterVC.dataSourceController;
     
     self.openInBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(openInAction)];
     self.interactionController = [[UIDocumentInteractionController alloc] init];
@@ -124,12 +122,20 @@
         [self insertCredentialsWithWebView:webView];
         self.isLoggedIn = YES;
     }
-    
-    NSMutableString *html = [NSMutableString stringWithString:[webView stringByEvaluatingJavaScriptFromString:@"document.body.innerHTML"]];
-    CFStringRef transform = CFSTR("Any-Hex/Java");
-    CFStringTransform((__bridge CFMutableStringRef)html, NULL, transform, YES);
+}
 
-    [self.htmlParser updateLinksArrayWithHTML:html];
+-(void)scanForPDFs
+{
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"HTMLParser" withExtension:@"js"];
+    NSString *parser = [NSString stringWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil];
+    
+    NSString *json = [self.webView stringByEvaluatingJavaScriptFromString:parser];
+    NSLog(@"parser json: %@", json);
+    
+    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *pdfLinkTuples = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+    NSLog(@"pdfLinks: %@", pdfLinkTuples);
+    [self.dataSourceController addLinksToTable:pdfLinkTuples];
 }
 
 -(void)rewindAction
@@ -215,7 +221,6 @@
         [webView stringByEvaluatingJavaScriptFromString:jScriptString1];
         [webView stringByEvaluatingJavaScriptFromString:jScriptString2];
         [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('button')[0].click()"];
-        
     }
 }
 

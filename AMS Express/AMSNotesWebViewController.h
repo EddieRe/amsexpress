@@ -20,7 +20,6 @@
 @interface AMSNotesWebViewController : UIViewController <UIWebViewDelegate>
 
 @property (nonatomic, strong) AMSNotesDataSourceController *dataSourceController;
-@property (nonatomic, strong) AMSNotesHTMLParser *htmlParser;
 @property (nonatomic, strong) UIDocumentInteractionController *interactionController;
 @property id <AMSNotesWebViewControllerDelegate> delegate;
 
@@ -40,5 +39,6 @@
 
 
 - (void)loadRequestFromString:(NSString *)urlString;
+- (void)scanForPDFs;
 
 @end
